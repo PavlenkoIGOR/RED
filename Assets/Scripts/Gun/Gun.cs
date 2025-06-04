@@ -1,0 +1,61 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public enum TypeProjectiles
+{
+    Standart,
+    Rocket
+}
+
+public class Gun : MonoBehaviour
+{
+
+    [Header("Properties")]
+    [SerializeField] private TypeProjectiles type;
+    [SerializeField] private float delay;
+
+    [Header("PrefabsProjectiles")]
+    [SerializeField] private Projectile standartPrefab;
+    [SerializeField] private Projectile rocketPrefab;
+
+    private bool canShoot = true;
+
+    private List<ParticleCollisionEvent> colEvents = new List<ParticleCollisionEvent>();
+
+    private void Update()
+    {
+        if (canShoot)
+        {
+            StartCoroutine(Shoot());
+        }
+    }
+    IEnumerator Shoot()
+    {
+
+        if (type == TypeProjectiles.Standart)
+        {
+            Instantiate(standartPrefab, transform.position, Quaternion.identity);
+            canShoot = false;
+            yield return new WaitForSeconds(delay);
+            canShoot = true;
+
+        }
+        else if (type == TypeProjectiles.Rocket)
+        {
+            Instantiate(rocketPrefab, transform.position, Quaternion.identity);
+            canShoot = false;
+            yield return new WaitForSeconds(delay);
+            canShoot = true;
+
+        }
+    }
+
+    
+   
+
+
+
+    
+}
