@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 2
   velocityEnm: 2
-  lifeTime: 2
+  lifeTime: 4
   lifeTimeEnm: 5
   damage: 10
   type: 0

@@ -34,21 +34,19 @@ public class Gun : MonoBehaviour
     IEnumerator Shoot()
     {
 
-        if (type == TypeProjectiles.Standart)
+        if (type == TypeProjectiles.Standart && standartPrefab)
         {
-            Instantiate(standartPrefab, transform.position, Quaternion.identity);
+            var stdPref = Instantiate(standartPrefab, transform.position, Quaternion.identity);
             canShoot = false;
             yield return new WaitForSeconds(delay);
             canShoot = true;
-
         }
-        else if (type == TypeProjectiles.Rocket)
+        else if (type == TypeProjectiles.Rocket && rocketPrefab)
         {
-            Instantiate(rocketPrefab, transform.position, Quaternion.identity);
+            var rocketPref = Instantiate(rocketPrefab, transform.position, Quaternion.identity);
             canShoot = false;
             yield return new WaitForSeconds(delay);
             canShoot = true;
-
         }
     }
 
