@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject _menuPanel;
     [SerializeField] private Gun _playerGun;
     [SerializeField] private GameObject _joystick;
+    
 
     private void Start()
     {
@@ -57,10 +58,12 @@ public class GameController : MonoBehaviour
         if (_isPause)
         {
             Time.timeScale = 1.0f;
+            _menuPanel.SetActive(false);
         }
         else 
         {
-            Time.timeScale = 0.0f;            
+            Time.timeScale = 0.0f;
+            _menuPanel.SetActive(true);
         }
         _isPause = !_isPause;
     }

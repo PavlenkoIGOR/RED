@@ -1,19 +1,17 @@
+using SpaceShooter;
 using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Destructible
 {
-    [SerializeField] private float health;
     [SerializeField] private float delay;
     [SerializeField] private float moveSpeed;
     [SerializeField] private Transform gun;
     [SerializeField] private Projectile enmProjPrefab;
 
     [SerializeField] private List<Vector3> massiveWards = new List<Vector3>();
-    public float Health => health;
+
 
     private bool canShoot = true;
   
@@ -21,15 +19,6 @@ public class Enemy : MonoBehaviour
     {
         EnemySpawner.enemyesAlive.Add(this);
         
-    }
-    public void ApplyDamage(float damage)
-    { 
-        health -= damage;
-
-        if(health <= 0)
-        {
-            DamageSelf();
-        }
     }
 
 
@@ -41,12 +30,6 @@ public class Enemy : MonoBehaviour
         StartCoroutine(Move());
     }
 
-    private void DamageSelf()
-    {
-        EnemySpawner.enemyesAlive.Remove(this);
-        Destroy(gameObject);
-
-    }
 
     IEnumerator Shoot()
     {

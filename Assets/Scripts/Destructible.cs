@@ -15,19 +15,22 @@ namespace SpaceShooter
         /// <summary>
         /// Объект игнорирует повреждения.
         /// </summary>
-        [SerializeField] private bool m_Indestructible;
-        public bool IsIndestructible => m_Indestructible;
+        [SerializeField] private bool _isDestructible;
+        public bool isDestructible => _isDestructible;
 
         /// <summary>
         /// Стартовое кол-во хитпоинтов.
         /// </summary>
-        [SerializeField] private int m_HitPoints;
+        [SerializeField] private int _hitPoints;
         
         /// <summary>
         /// Текущие хит поинты
         /// </summary>
-        private int m_CurrentHitPoints;
-        public int HitPoints => m_CurrentHitPoints;
+        private int _currentHitPoints;
+        public int currentHitPoints => _currentHitPoints;
+
+        [SerializeField] private SpriteRenderer _healthBarMain;
+        float _originalSizeY;
 
         #endregion
 
@@ -35,7 +38,8 @@ namespace SpaceShooter
 
         protected virtual void Start()
         {
-            m_CurrentHitPoints = m_HitPoints;
+            _currentHitPoints = _hitPoints;
+            _originalSizeY = _healthBarMain.size.y;
         }
 
         #region Безтеговая коллекция скриптов на сцене
@@ -69,18 +73,25 @@ namespace SpaceShooter
         /// <param name="damage"></param>
         public void ApplyDamage(int damage)
         {
-            if (m_Indestructible)
+            if (!_isDestructible)
                 return;
 
-            m_CurrentHitPoints -= damage;
+            _currentHitPoints -= damage;
+            if (_healthBarMain)
+            {
+                // Вычисляем новую высоту пропорционально оставшимся очкам здоровья
+                float healthRatio = (float)_currentHitPoints / _hitPoints;
+                _healthBarMain.size = new Vector2(_healthBarMain.size.x, Mathf.Clamp(healthRatio, 0, _originalSizeY));
+            }
 
-            if (m_CurrentHitPoints < 0)
+
+            if (_currentHitPoints < 0)
                 OnDeath();
         }
 
         public void AddHitPoints(float hp)
         {
-            m_CurrentHitPoints = (int)Mathf.Clamp(m_CurrentHitPoints + hp, 0, m_HitPoints);
+            _currentHitPoints = (int)Mathf.Clamp(_currentHitPoints + hp, 0, _hitPoints);
         }
 
         #endregion
@@ -126,8 +137,8 @@ namespace SpaceShooter
         /// <summary>
         /// Кол-во очков за уничтожение.
         /// </summary>
-        [SerializeField] private int m_ScoreValue;
-        public int ScoreValue => m_ScoreValue;
+        [SerializeField] private int _scoreValue;
+        public int scoreValue => _scoreValue;
 
         #endregion
     }
