@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private Gun _playerGun;
     [SerializeField] private GameObject _joystick;
     
+    private ScoreController _scoreController;
 
     private void Start()
     {
@@ -42,6 +43,8 @@ public class GameController : MonoBehaviour
         if (_gameState == GameState.Pause)
         {
         }
+
+
     }
 
     public void StartGame()

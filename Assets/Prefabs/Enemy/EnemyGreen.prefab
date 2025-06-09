@@ -425,7 +425,6 @@ GameObject:
   m_Component:
   - component: {fileID: 19088817968869179}
   - component: {fileID: 2106819546367984601}
-  - component: {fileID: -2640980659057897204}
   m_Layer: 0
   m_Name: EnemyGreen
   m_TagString: Untagged
@@ -481,24 +480,3 @@ MonoBehaviour:
   - {x: 1.7, y: 3.7, z: 0}
   - {x: 0, y: 3.7, z: 0}
   - {x: -1.7, y: 3.7, z: 0}
---- !u!114 &-2640980659057897204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6701578349764366851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 785497900eec88e448ea4200811231c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Nickname: 
-  _isDestructible: 0
-  _hitPoints: 0
-  _healthBarMain: {fileID: 0}
-  m_EventOnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  m_TeamId: 0
-  _scoreValue: 0
