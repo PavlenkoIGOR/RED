@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 public enum GameState
 {
@@ -17,8 +16,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject _menuPanel;
     [SerializeField] private Gun _playerGun;
     [SerializeField] private GameObject _joystick;
-    
-    private ScoreController _scoreController;
+
+    //private ScoreController _scoreController;
+    [SerializeField] private ScoresTMP _scoresTMP;
+
+    //private LevelController levelController;
 
     private void Start()
     {
@@ -37,13 +39,19 @@ public class GameController : MonoBehaviour
 
         if (_gameState == GameState.Game)
         {
-            
+
         }
 
         if (_gameState == GameState.Pause)
         {
         }
 
+        int tmpScores = default;
+        if (Player.instance.score != tmpScores)
+        {
+            _scoresTMP._onScoreChanges?.Invoke();
+            tmpScores = Player.instance.score;
+        }
 
     }
 
@@ -63,7 +71,7 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1.0f;
             _menuPanel.SetActive(false);
         }
-        else 
+        else
         {
             Time.timeScale = 0.0f;
             _menuPanel.SetActive(true);
