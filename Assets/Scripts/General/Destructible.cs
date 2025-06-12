@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,7 +22,7 @@ namespace SpaceShooter
         /// Стартовое кол-во хитпоинтов.
         /// </summary>
         [SerializeField] private int _hitPoints;
-        
+
         /// <summary>
         /// Текущие хит поинты
         /// </summary>
@@ -33,6 +34,8 @@ namespace SpaceShooter
 
         protected float _originalSizeY;
 
+        [SerializeField] private Animator _animShipExplosion;
+        [SerializeField] private GameObject _viewExplosion;
         #endregion
 
         #region Unity events
@@ -60,6 +63,7 @@ namespace SpaceShooter
         protected virtual void OnDestroy()
         {
             m_AllDestructibles.Remove(this);
+            
         }
 
         #endregion 
@@ -101,22 +105,35 @@ namespace SpaceShooter
         /// </summary>
         protected virtual void OnDeath()
         {
-            //if (m_ExplosionPrefab != null)
-            //{
-            //    var explosion = Instantiate(m_ExplosionPrefab.gameObject);
-            //    explosion.transform.position = transform.position;
-            //}
+            if (transform.name == "Hero")
+            {
+                ShipController sContr = transform.GetComponent<ShipController>();
+                sContr.enabled = false;
+            }
+            if (transform.name.Contains("Enemy"))
+            {
+                Enemy enemyComp = transform.GetComponent<Enemy>();
+                //enemyComp.enabled = false;
+            }
+                foreach (Transform item in transform)
+                {
+                    item.gameObject.SetActive(false);
+                }
+            
+            _viewExplosion.SetActive(true);
+
+
+            StartCoroutine(PLayExplosion());
+            
             Player.instance.AddScore(scoreValue);
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
 
             m_EventOnDeath?.Invoke();
         }
 
         [SerializeField] private UnityEvent m_EventOnDeath;
         public UnityEvent EventOnDeath => m_EventOnDeath;
-
-        //[SerializeField] private ImpactEffect m_ExplosionPrefab;
 
         #region Teams
 
@@ -141,6 +158,87 @@ namespace SpaceShooter
         [SerializeField] private int _scoreValue;
         public int scoreValue => _scoreValue;
 
+        #endregion
+
+
+
+
+
+        #region animation
+        private IEnumerator PLayExplosion()
+        {
+            if (_animShipExplosion != null)
+            {
+                if (transform.name == "Hero")
+                {
+                    _animShipExplosion.Play("HeroExplosionAnimation");
+
+                    float clipLength = default;
+                    RuntimeAnimatorController rac = _animShipExplosion.runtimeAnimatorController;
+                    for (int i = 0; i < rac.animationClips.Length; i++)
+                    {
+                        if (rac.animationClips[i].name == "HeroExplosionAnimation")
+                        {
+                            clipLength = rac.animationClips[i].length;
+                        }
+                    }
+
+                    yield return new WaitForSeconds(clipLength);
+                }
+
+                if (transform.name.Contains("Blue"))
+                {
+                    _animShipExplosion.Play("BlueShipExplosion");
+
+                    float clipLength = default;
+                    RuntimeAnimatorController rac = _animShipExplosion.runtimeAnimatorController;
+                    for (int i = 0; i < rac.animationClips.Length; i++)
+                    {
+                        if (rac.animationClips[i].name == "BlueShipExplosion")
+                        {
+                            clipLength = rac.animationClips[i].length;
+                        }
+                    }
+
+                    yield return new WaitForSeconds(clipLength);
+                }
+                if (transform.name.Contains("Green"))
+                {
+                    _animShipExplosion.Play("GreenExplosionAnimation");
+
+                    float clipLength = default;
+                    RuntimeAnimatorController rac = _animShipExplosion.runtimeAnimatorController;
+                    for (int i = 0; i < rac.animationClips.Length; i++)
+                    {
+                        if (rac.animationClips[i].name == "GreenExplosionAnimation")
+                        {
+                            clipLength = rac.animationClips[i].length;
+                        }
+                    }
+
+                    yield return new WaitForSeconds(clipLength);
+                }
+                if (transform.name.Contains("Purple"))
+                {
+                    _animShipExplosion.Play("VioletShipExplosionaAnimation");
+
+                    float clipLength = default;
+                    RuntimeAnimatorController rac = _animShipExplosion.runtimeAnimatorController;
+                    for (int i = 0; i < rac.animationClips.Length; i++)
+                    { 
+                        if (rac.animationClips[i].name == "VioletShipExplosionaAnimation")
+                        {
+                            clipLength = rac.animationClips[i].length;
+                        }
+                    }
+
+                    yield return new WaitForSeconds(clipLength);
+                }
+
+                Destroy(gameObject);
+            }
+
+        }
         #endregion
     }
 }

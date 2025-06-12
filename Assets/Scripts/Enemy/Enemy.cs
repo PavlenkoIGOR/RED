@@ -26,13 +26,17 @@ public class Enemy : Destructible
 
     public void SmokeAnim()
     {
-        if (healthBarMain.size.y <= _originalSizeY / 3 * 2 & healthBarMain.size.y > _originalSizeY / 3)
+        if (_animatorsSmoke != null && _animatorsSmoke[1].transform.gameObject.activeSelf)
         {
-            _animatorsSmoke[0].Play("SmokeAnim1");
-        }
-        if (healthBarMain.size.y <= _originalSizeY / 3)
-        {
-            _animatorsSmoke[1].Play("SmokeAnim1");
+            if (healthBarMain.size.y <= _originalSizeY / 3 * 2 & healthBarMain.size.y > _originalSizeY / 3)
+            {
+                _animatorsSmoke[0].Play("SmokeAnim1");
+            }
+            if (healthBarMain.size.y <= _originalSizeY / 3)
+            {
+                _animatorsSmoke[1].Play("SmokeAnim1");
+            }
+
         }
     }
 
@@ -54,10 +58,15 @@ public class Enemy : Destructible
 
     protected override void OnDestroy()
     {
-        for (int i = 0; i < _animatorsSmoke.Length; i++)
+        if (healthBarMain.size.y <= 0)
         {
-            _animatorsSmoke[i].StopPlayback();
+            for (int i = 0; i < _animatorsSmoke.Length; i++)
+            {
+                _animatorsSmoke[i].StopPlayback();
+            }
         }
+
+        base.OnDestroy();
     }
 
     public void ActivateShoot()
@@ -65,7 +74,9 @@ public class Enemy : Destructible
 
         StartCoroutine(Shoot());
         StartCoroutine(Move());
+        
     }
+
 
 
     IEnumerator Shoot()
