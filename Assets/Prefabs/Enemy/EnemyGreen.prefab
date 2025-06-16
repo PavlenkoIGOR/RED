@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1357139738925288750}
   - component: {fileID: 3398830302817025931}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 843006013726028675}
   - component: {fileID: 6613850135466422477}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthBarMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7323860020587782017}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 83138764231817291}
   - component: {fileID: 4437778023551862368}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 5487646474031998627}
   - component: {fileID: 1097344716659610226}
   - component: {fileID: 4344441107439228991}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Smoke (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5252882431938312126}
   - component: {fileID: 8010173379450707466}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8118245388205033264}
   - component: {fileID: 798822563407275555}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 19088817968869179}
   - component: {fileID: 2106819546367984601}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +589,8 @@ MonoBehaviour:
   _scoreValue: 20
   delay: 1.2
   moveSpeed: 2
-  gun: {fileID: 7323860020587782017}
+  guns:
+  - {fileID: 7323860020587782017}
   enmProjPrefab: {fileID: 7414316952887549102, guid: 2bd72b644148fc843a02b3a5974e4f83, type: 3}
   massiveWards:
   - {x: 1.7, y: 3.7, z: 0}
@@ -609,7 +610,7 @@ GameObject:
   - component: {fileID: 351946360392757827}
   - component: {fileID: 83454381973812573}
   - component: {fileID: 7953681978295984571}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -719,7 +720,7 @@ GameObject:
   - component: {fileID: 7634142990346545816}
   - component: {fileID: 2329450982358421617}
   - component: {fileID: 3801622901455199089}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ViewExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -16,18 +16,14 @@ namespace SpaceShooter
         /// Объект игнорирует повреждения.
         /// </summary>
         [SerializeField] private bool _isDestructible;
-        public bool isDestructible => _isDestructible;
+        public bool isDestructible { get { return _isDestructible; } set { _isDestructible = value; } }
 
         /// <summary>
         /// Стартовое кол-во хитпоинтов.
         /// </summary>
         [SerializeField] private int _hitPoints;
-
-        /// <summary>
-        /// Текущие хит поинты
-        /// </summary>
         private int _currentHitPoints;
-        protected int currentHitPoints => _currentHitPoints;
+        public int currentHitPoints => _currentHitPoints;
 
         [SerializeField] private SpriteRenderer _healthBarMain;
         protected SpriteRenderer healthBarMain => _healthBarMain;
@@ -63,7 +59,7 @@ namespace SpaceShooter
         protected virtual void OnDestroy()
         {
             m_AllDestructibles.Remove(this);
-            
+
         }
 
         #endregion 
@@ -90,7 +86,10 @@ namespace SpaceShooter
 
 
             if (_currentHitPoints <= 0)
+            {
                 OnDeath();
+            }
+                
         }
 
         public void AddHitPoints(float hp)
@@ -113,21 +112,18 @@ namespace SpaceShooter
             if (transform.name.Contains("Enemy"))
             {
                 Enemy enemyComp = transform.GetComponent<Enemy>();
-                //enemyComp.enabled = false;
             }
-                foreach (Transform item in transform)
-                {
-                    item.gameObject.SetActive(false);
-                }
-            
+            foreach (Transform item in transform)
+            {
+                item.gameObject.SetActive(false);
+            }
+
             _viewExplosion.SetActive(true);
 
 
             StartCoroutine(PLayExplosion());
-            
-            Player.instance.AddScore(scoreValue);
 
-            //Destroy(gameObject);
+            Player.instance.AddScore(scoreValue);
 
             m_EventOnDeath?.Invoke();
         }
@@ -184,6 +180,7 @@ namespace SpaceShooter
                     }
 
                     yield return new WaitForSeconds(clipLength);
+
                 }
 
                 if (transform.name.Contains("Blue"))
@@ -225,7 +222,7 @@ namespace SpaceShooter
                     float clipLength = default;
                     RuntimeAnimatorController rac = _animShipExplosion.runtimeAnimatorController;
                     for (int i = 0; i < rac.animationClips.Length; i++)
-                    { 
+                    {
                         if (rac.animationClips[i].name == "VioletShipExplosionaAnimation")
                         {
                             clipLength = rac.animationClips[i].length;

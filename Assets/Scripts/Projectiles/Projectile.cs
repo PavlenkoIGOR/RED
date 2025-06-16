@@ -1,14 +1,12 @@
 using SpaceShooter;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
 public enum TypeProj
 {
     Hero,
-    Enemy
+    Enemy,
+    Boss
 }
 public class Projectile : MonoBehaviour
 {
@@ -17,20 +15,27 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private float lifeTime;
     [SerializeField] private float lifeTimeEnm;
+    [SerializeField] private float lifeTimeBoss;
 
     [SerializeField] private int damage;
 
 
     [SerializeField] private TypeProj type;
 
+
+
     private void Start()
     {
         if (type == TypeProj.Hero)
             Destroy(gameObject, lifeTime);
 
-        else
+        else if(type == TypeProj.Enemy)
         {
             Destroy(gameObject, lifeTimeEnm);
+        }  
+        else if(type == TypeProj.Boss)
+        {
+            Destroy(gameObject, lifeTimeBoss);
         }
     }
     private void Update()
@@ -49,14 +54,15 @@ public class Projectile : MonoBehaviour
                 Enemy enm = hit.collider.transform.root.GetComponent<Enemy>();
                 if (enm != null)
                 {
-                    enm.ApplyDamage(damage);                    
+                    enm.ApplyDamage(damage);
+                    OnProjectileLifeEnd(hit.collider, hit.point);
                 }
-                OnProjectileLifeEnd(hit.collider, hit.point);
+                
             }
             transform.position += new Vector3(step.x, step.y, 0);
         }
 
-        else if (type == TypeProj.Enemy)
+        else if (type == TypeProj.Enemy || type == TypeProj.Boss)
         {
             float stepLength = Time.deltaTime * velocityEnm;
 
@@ -67,10 +73,12 @@ public class Projectile : MonoBehaviour
             if (hit)
             {
                 Destructible hero = hit.collider.transform.root.GetComponent<Destructible>();
-                //if (enm != null)
-                hero.ApplyDamage(damage);
+                if (hero != null)
+                {
+                    hero.ApplyDamage(damage);
 
-                OnProjectileLifeEnd(hit.collider, hit.point);
+                    OnProjectileLifeEnd(hit.collider, hit.point);
+                }
             }
             transform.position += new Vector3(step.x, step.y, 0);
         }
@@ -78,6 +86,7 @@ public class Projectile : MonoBehaviour
 
     private void OnProjectileLifeEnd(Collider2D col, Vector2 pos)
     {
+
         Destroy(gameObject);
     }
 }

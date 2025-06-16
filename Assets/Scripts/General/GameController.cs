@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 public enum GameState
 {
     MainMenu,
@@ -8,60 +9,60 @@ public enum GameState
 
 public class GameController : MonoBehaviour
 {
+    
+    [SerializeField] private GameObject _ui;
     [SerializeField] private EnemySpawner spawner;
+    [SerializeField] private BaffSpawner _baffSpawner;
 
-    private bool _isGameStart;
+    private bool _isGameStarted;
     private bool _isPause;
     private GameState _gameState;
     [SerializeField] private GameObject _menuPanel;
     [SerializeField] private Gun _playerGun;
     [SerializeField] private GameObject _joystick;
 
-    //private ScoreController _scoreController;
+    #region gameOver
+    [SerializeField]private GameObject _gameOverScreen;
+    [HideInInspector]public UnityEvent OnHeroDeath;
+    #endregion
+
     [SerializeField] private ScoresTMP _scoresTMP;
+    int tmpScores = default;
 
-    //private LevelController levelController;
-
+    #region timer
+    float _timer_tmp = 0;
+    [SerializeField] float _spawnTime = 2.0f;
+    #endregion
     private void Start()
     {
         _gameState = GameState.MainMenu;
         _playerGun.enabled = false;
         _menuPanel.SetActive(true);
         _joystick.SetActive(false);
+
+        OnHeroDeath?.AddListener(GameOverAnim);
     }
 
     private protected void Update()
     {
-        if (_gameState == GameState.MainMenu)
+        if (Player.instance.score - tmpScores >= 100)
         {
 
         }
-
-        if (_gameState == GameState.Game)
+        if (EnemySpawner.enemyesAlive.Count<=0 && _isGameStarted)
         {
-
+           spawner.SpawnRandomEnemyes();
         }
-
-        if (_gameState == GameState.Pause)
-        {
-        }
-
-        int tmpScores = default;
-        if (Player.instance.score != tmpScores)
-        {
-            _scoresTMP._onScoreChanges?.Invoke();
-            tmpScores = Player.instance.score;
-        }
-
     }
 
     public void StartGame()
     {
         _menuPanel.SetActive(false);
-        _isGameStart = true;
+        _isGameStarted = true;
         _playerGun.enabled = true;
         spawner.SpawnRandomEnemyes();
         _joystick.SetActive(true);
+        Time.timeScale = 1.0f;
     }
 
     public void PauseGame()
@@ -70,12 +71,20 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             _menuPanel.SetActive(false);
+            _joystick.SetActive(true);
         }
         else
         {
             Time.timeScale = 0.0f;
             _menuPanel.SetActive(true);
+            _joystick.SetActive(false);
         }
         _isPause = !_isPause;
+    }
+
+    private void GameOverAnim()
+    {
+        _ui.SetActive(false);
+        _gameOverScreen.GetComponent<Animator>().Play("GameOverAnim");
     }
 }

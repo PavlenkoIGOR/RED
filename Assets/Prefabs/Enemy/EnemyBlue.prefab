@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3332265597461971858}
   - component: {fileID: 6161667763726639745}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 2491436947438615429}
   - component: {fileID: 7775963791409528302}
   - component: {fileID: 3246291649813291961}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Smoke (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9164289388400474968}
   - component: {fileID: 3981179269826798367}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,8 +266,9 @@ MonoBehaviour:
   m_TeamId: 0
   _scoreValue: 10
   delay: 1.5
-  moveSpeed: 2
-  gun: {fileID: 3671615873911467890}
+  moveSpeed: 1.4
+  guns:
+  - {fileID: 3671615873911467890}
   enmProjPrefab: {fileID: 7414316952887549102, guid: 2bd72b644148fc843a02b3a5974e4f83, type: 3}
   massiveWards:
   - {x: 1.7, y: 3.7, z: 0}
@@ -286,7 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2099865873854793905}
   - component: {fileID: 8691263502120368087}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +356,7 @@ GameObject:
   - component: {fileID: 2501974676492918192}
   - component: {fileID: 4014366525870928442}
   - component: {fileID: 8104457774960921930}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5187,7 +5188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6135500610184394529}
   - component: {fileID: 386822917569573999}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthBarMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5279,7 +5280,7 @@ GameObject:
   - component: {fileID: 7714580877407522394}
   - component: {fileID: 3397713026314808364}
   - component: {fileID: 5205142262617710924}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5387,7 +5388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3671615873911467890}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5420,7 +5421,7 @@ GameObject:
   - component: {fileID: 7184110861847126337}
   - component: {fileID: 6908838579692298461}
   - component: {fileID: 1363708938811523960}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10252,7 +10253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1617536022894179100}
   - component: {fileID: 3584446334794521256}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10299,7 +10300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2590134278142835229}
   - component: {fileID: 740291348143198614}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10387,7 +10388,7 @@ GameObject:
   - component: {fileID: 3523235654721974615}
   - component: {fileID: 8822809169285702504}
   - component: {fileID: 1132654777710209773}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ExplosionView
   m_TagString: Untagged
   m_Icon: {fileID: 0}

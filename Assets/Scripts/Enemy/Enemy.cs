@@ -9,7 +9,7 @@ public class Enemy : Destructible
 {
     [SerializeField] private float delay;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private Transform gun;
+    [SerializeField] private Transform[] guns;
     [SerializeField] private Projectile enmProjPrefab;
 
     [SerializeField] private List<Vector3> massiveWards = new List<Vector3>();
@@ -20,8 +20,7 @@ public class Enemy : Destructible
 
     private void Awake()
     {
-        EnemySpawner.enemyesAlive.Add(this);
-        
+        EnemySpawner.enemyesAlive.Add(this);        
     }
 
     public void SmokeAnim()
@@ -40,24 +39,13 @@ public class Enemy : Destructible
         }
     }
 
-    private void ShipExlosionAnim()
-    {
-        if (currentHitPoints <= 0)
-        {
-            if (transform.root.name == "Hero")
-            {
-             //   _animatorsSmoke
-            }
-        }
-    }
-
     private void Update()
     {
         SmokeAnim();
     }
 
     protected override void OnDestroy()
-    {
+    {        
         if (healthBarMain.size.y <= 0)
         {
             for (int i = 0; i < _animatorsSmoke.Length; i++)
@@ -65,16 +53,15 @@ public class Enemy : Destructible
                 _animatorsSmoke[i].StopPlayback();
             }
         }
-
+        EnemySpawner.enemyesAlive.Remove(this);
+        //print($"afterDestroy {EnemySpawner.enemyesAlive.Count}");
         base.OnDestroy();
     }
 
     public void ActivateShoot()
     {
-
         StartCoroutine(Shoot());
-        StartCoroutine(Move());
-        
+        StartCoroutine(Move());        
     }
 
 
@@ -83,11 +70,13 @@ public class Enemy : Destructible
     {
         while (true)
         {
-
-            Instantiate(enmProjPrefab, gun.position, gun.rotation);
-            canShoot = false;
-            yield return new WaitForSeconds(delay);
-            canShoot = true;
+            for (int i = 0; i < guns.Length; i++)
+            {
+                Instantiate(enmProjPrefab, guns[i].position, guns[i].rotation);
+                canShoot = false;
+                yield return new WaitForSeconds(delay);
+                canShoot = true;
+            }
         }
 
     }
@@ -95,7 +84,7 @@ public class Enemy : Destructible
     IEnumerator Move()
     {
         int i = 0;
-        while (true)
+        while (currentHitPoints > 0)
         {
             if (i == massiveWards.Count)
             {
