@@ -234,6 +234,22 @@ namespace SpaceShooter
 
                     yield return new WaitForSeconds(clipLength);
                 }
+                if (transform.name.Contains("Boss"))
+                {
+                    _animShipExplosion.Play("BossExplosionAnim");
+
+                    float clipLength = default;
+                    RuntimeAnimatorController rac = _animShipExplosion.runtimeAnimatorController;
+                    for (int i = 0; i < rac.animationClips.Length; i++)
+                    {
+                        if (rac.animationClips[i].name == "BossExplosionAnim")
+                        {
+                            clipLength = rac.animationClips[i].length;
+                        }
+                    }
+
+                    yield return new WaitForSeconds(clipLength);
+                }
 
                 Destroy(gameObject);
             }

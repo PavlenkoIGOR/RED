@@ -33,7 +33,6 @@ public class Enemy : Destructible
             {
                 _animatorsSmoke[1].Play("SmokeAnim1");
             }
-
         }
     }
 
@@ -52,32 +51,31 @@ public class Enemy : Destructible
             }
         }
         EnemySpawner.enemyesAlive.Remove(this);
-        //print($"afterDestroy {EnemySpawner.enemyesAlive.Count}");
         base.OnDestroy();
     }
 
     public void ActivateShoot()
     {
-        StartCoroutine(Shoot());
+        //StartCoroutine(Shoot());
         StartCoroutine(Move());        
     }
 
 
 
-    IEnumerator Shoot()
-    {
-        while (true)
-        {
-            for (int i = 0; i < guns.Length; i++)
-            {
-                Instantiate(enmProjPrefab, guns[i].position, guns[i].rotation);
-                canShoot = false;
-                yield return new WaitForSeconds(delay);
-                canShoot = true;
-            }
-        }
+    //IEnumerator Shoot()
+    //{
+    //    while (true)
+    //    {
+    //        for (int i = 0; i < guns.Length; i++)
+    //        {
+    //            Instantiate(enmProjPrefab, guns[i].position, guns[i].rotation);
+    //            canShoot = false;
+    //            yield return new WaitForSeconds(delay);
+    //            canShoot = true;
+    //        }
+    //    }
 
-    }
+    //}
 
     IEnumerator Move()
     {
@@ -95,7 +93,5 @@ public class Enemy : Destructible
             }
             yield return null;
         }
-
     }
-
 }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -11,13 +10,17 @@ public class EnemySpawner : MonoBehaviour
     [HideInInspector] public static List<Enemy> enemyesAlive = new List<Enemy>();
     public void SpawnRandomEnemyes()
     {
-        foreach(var point in spawnPoints)
-        { 
+        foreach (var point in spawnPoints)
+        {
             var x = Random.Range(0, enemiesPrefabs.Count);
-            var enmPrefab =  Instantiate(enemiesPrefabs[x], point.transform.position, Quaternion.identity);
+            var enmPrefab = Instantiate(enemiesPrefabs[x], point.transform.position, Quaternion.identity);
             point.Setposition(enmPrefab);
         }
-        //print($"onTheScene {enemyesAlive.Count}");
     }
-
+    public void SpawnBoss()
+    {
+        var x = Random.Range(0, enemiesPrefabs.Count);
+        var enmPrefab = Instantiate(_bossPrefab, spawnPoints[Random.Range(0, spawnPoints.Count)].transform.position, Quaternion.identity);
+        spawnPoints[Random.Range(0, spawnPoints.Count)].Setposition(enmPrefab);
+    }
 }

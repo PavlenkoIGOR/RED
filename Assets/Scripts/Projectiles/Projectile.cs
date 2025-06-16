@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private TypeProj type;
 
-    [SerializeField] private AudioSource _shotSound;
+    //[SerializeField] private AudioSource _shotSound;
 
     private void Start()
     {
@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject, lifeTimeBoss);
         }
-        _shotSound.Play();
+        //_shotSound.Play();
     }
     private void Update()
     {
@@ -64,7 +64,7 @@ public class Projectile : MonoBehaviour
             transform.position += new Vector3(step.x, step.y, 0);
         }
 
-        else if (type == TypeProj.Enemy || type == TypeProj.Boss)
+        else if (type == TypeProj.Enemy)
         {
             float stepLength = Time.deltaTime * velocityEnm;
 

@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 public enum GameState
@@ -48,11 +49,14 @@ public class GameController : MonoBehaviour
 
         if (EnemySpawner.enemyesAlive.Count<=0 && _isGameStarted)
         {
-            if (Player.instance.score - tmpScores >= 100)
+            if (Player.instance.score - tmpScores >= 60)
             {
-
+                spawner.SpawnBoss();
             }
-            spawner.SpawnRandomEnemyes();
+            else
+            {
+                spawner.SpawnRandomEnemyes();
+            }
         }
     }
 
@@ -87,6 +91,9 @@ public class GameController : MonoBehaviour
     {
         _ui.SetActive(false);
         _gameOverScreen.GetComponent<Animator>().Play("GameOverAnim");
+        _gameOverScreen.GetComponent<AudioSource>().Play();
+        _isGameStarted = false;
+        EnemySpawner.enemyesAlive.Clear();
         OnHeroDeath.RemoveAllListeners();
     }
 }
