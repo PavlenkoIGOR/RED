@@ -45,13 +45,14 @@ public class GameController : MonoBehaviour
 
     private protected void Update()
     {
-        if (Player.instance.score - tmpScores >= 100)
-        {
 
-        }
         if (EnemySpawner.enemyesAlive.Count<=0 && _isGameStarted)
         {
-           spawner.SpawnRandomEnemyes();
+            if (Player.instance.score - tmpScores >= 100)
+            {
+
+            }
+            spawner.SpawnRandomEnemyes();
         }
     }
 
@@ -86,5 +87,6 @@ public class GameController : MonoBehaviour
     {
         _ui.SetActive(false);
         _gameOverScreen.GetComponent<Animator>().Play("GameOverAnim");
+        OnHeroDeath.RemoveAllListeners();
     }
 }

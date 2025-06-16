@@ -25,7 +25,7 @@ public class Gun : MonoBehaviour
     private List<ParticleCollisionEvent> colEvents = new List<ParticleCollisionEvent>();
 
 
-    [SerializeField] private AudioSource _shotSound;
+    //[SerializeField] private AudioSource _shotSound;
 
     private void Update()
     {
@@ -40,7 +40,7 @@ public class Gun : MonoBehaviour
         if (type == TypeProjectiles.Standart && standartPrefab)
         {
             var stdPref = Instantiate(standartPrefab, transform.position, Quaternion.identity);
-            _shotSound?.Play();
+            //_shotSound?.Play();
             canShoot = false;
             yield return new WaitForSeconds(delay);
             canShoot = true;

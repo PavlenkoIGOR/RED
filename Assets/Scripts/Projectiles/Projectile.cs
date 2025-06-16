@@ -22,21 +22,23 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private TypeProj type;
 
-
+    [SerializeField] private AudioSource _shotSound;
 
     private void Start()
     {
         if (type == TypeProj.Hero)
+        {
             Destroy(gameObject, lifeTime);
-
-        else if(type == TypeProj.Enemy)
+        }
+        else if (type == TypeProj.Enemy)
         {
             Destroy(gameObject, lifeTimeEnm);
-        }  
-        else if(type == TypeProj.Boss)
+        }
+        else if (type == TypeProj.Boss)
         {
             Destroy(gameObject, lifeTimeBoss);
         }
+        _shotSound.Play();
     }
     private void Update()
     {
@@ -57,7 +59,7 @@ public class Projectile : MonoBehaviour
                     enm.ApplyDamage(damage);
                     OnProjectileLifeEnd(hit.collider, hit.point);
                 }
-                
+
             }
             transform.position += new Vector3(step.x, step.y, 0);
         }

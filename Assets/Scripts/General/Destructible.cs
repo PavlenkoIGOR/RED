@@ -34,6 +34,7 @@ namespace SpaceShooter
         [SerializeField] private GameObject _viewExplosion;
         #endregion
 
+        [SerializeField] private AudioSource _shipExplosionSound;
         #region Unity events
 
         protected virtual void Start()
@@ -124,6 +125,8 @@ namespace SpaceShooter
             StartCoroutine(PLayExplosion());
 
             Player.instance.AddScore(scoreValue);
+
+            _shipExplosionSound.Play();
 
             m_EventOnDeath?.Invoke();
         }
