@@ -2,7 +2,7 @@ using SpaceShooter;
 using UnityEngine;
 
 
-public enum TypeProj
+public enum TypeEntity
 {
     Hero,
     Enemy,
@@ -20,29 +20,26 @@ public class Projectile : MonoBehaviour
     [SerializeField] private int damage;
 
 
-    [SerializeField] private TypeProj type;
-
-    //[SerializeField] private AudioSource _shotSound;
+    [SerializeField] private TypeEntity type;
 
     private void Start()
     {
-        if (type == TypeProj.Hero)
+        if (type == TypeEntity.Hero)
         {
             Destroy(gameObject, lifeTime);
         }
-        else if (type == TypeProj.Enemy)
+        else if (type == TypeEntity.Enemy)
         {
             Destroy(gameObject, lifeTimeEnm);
         }
-        else if (type == TypeProj.Boss)
+        else if (type == TypeEntity.Boss)
         {
             Destroy(gameObject, lifeTimeBoss);
         }
-        //_shotSound.Play();
     }
     private void Update()
     {
-        if (type == TypeProj.Hero)
+        if (type == TypeEntity.Hero)
         {
             float stepLength = Time.deltaTime * velocity;
 
@@ -64,7 +61,7 @@ public class Projectile : MonoBehaviour
             transform.position += new Vector3(step.x, step.y, 0);
         }
 
-        else if (type == TypeProj.Enemy)
+        else if (type == TypeEntity.Enemy)
         {
             float stepLength = Time.deltaTime * velocityEnm;
 

@@ -7,14 +7,17 @@ public class Enemy : Destructible
 {
     [SerializeField] private float delay;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private Transform[] guns;
+    [SerializeField] private Gun[] guns;
     [SerializeField] private Projectile enmProjPrefab;
 
     [SerializeField] private List<Vector3> massiveWards = new List<Vector3>();
 
     [SerializeField] private Animator[] _animatorsSmoke;
+    public TypeEntity enemyType;
 
     private bool canShoot = true;
+
+    public Gun[] Guns { get { return guns; } }
 
     private void Awake()
     {
@@ -25,13 +28,32 @@ public class Enemy : Destructible
     {
         if (_animatorsSmoke != null && _animatorsSmoke[1].transform.gameObject.activeSelf)
         {
-            if (healthBarMain.size.y <= _originalSizeY / 3 * 2 & healthBarMain.size.y > _originalSizeY / 3)
+            if (enemyType == TypeEntity.Enemy)
             {
-                _animatorsSmoke[0].Play("SmokeAnim1");
+                if (healthBarMain.size.y <= _originalSizeY / 3 * 2 & healthBarMain.size.y > _originalSizeY / 3)
+                {
+                    _animatorsSmoke[0].Play("SmokeAnim1");
+                }
+                if (healthBarMain.size.y <= _originalSizeY / 3)
+                {
+                    _animatorsSmoke[1].Play("SmokeAnim1");
+                }
             }
-            if (healthBarMain.size.y <= _originalSizeY / 3)
+
+            else if (enemyType == TypeEntity.Boss)
             {
-                _animatorsSmoke[1].Play("SmokeAnim1");
+                if (healthBarMain.size.y <= _originalSizeY / 4 * 3 & healthBarMain.size.y > _originalSizeY / 2)
+                {
+                    _animatorsSmoke[0].Play("SmokeAnim1");
+                }
+                if (healthBarMain.size.y <= _originalSizeY / 2 & healthBarMain.size.y > _originalSizeY / 4)
+                {
+                    _animatorsSmoke[1].Play("SmokeAnim1");
+                }
+                if (healthBarMain.size.y <= _originalSizeY / 4)
+                {
+                    _animatorsSmoke[2].Play("SmokeAnim1");
+                }
             }
         }
     }
@@ -54,28 +76,11 @@ public class Enemy : Destructible
         base.OnDestroy();
     }
 
-    public void ActivateShoot()
+    public void ActivateMove()
     {
-        //StartCoroutine(Shoot());
         StartCoroutine(Move());        
     }
 
-
-
-    //IEnumerator Shoot()
-    //{
-    //    while (true)
-    //    {
-    //        for (int i = 0; i < guns.Length; i++)
-    //        {
-    //            Instantiate(enmProjPrefab, guns[i].position, guns[i].rotation);
-    //            canShoot = false;
-    //            yield return new WaitForSeconds(delay);
-    //            canShoot = true;
-    //        }
-    //    }
-
-    //}
 
     IEnumerator Move()
     {

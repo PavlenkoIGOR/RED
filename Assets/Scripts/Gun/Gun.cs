@@ -20,16 +20,17 @@ public class Gun : MonoBehaviour
     [SerializeField] private Projectile standartPrefab;
     [SerializeField] private Projectile rocketPrefab;
 
-    private bool canShoot = true;
+    public bool canShootOnAwake = false;
 
     private List<ParticleCollisionEvent> colEvents = new List<ParticleCollisionEvent>();
 
 
    [SerializeField] private AudioSource _shotSound;
 
+
     private void Update()
     {
-        if (canShoot)
+        if (canShootOnAwake)
         {
             StartCoroutine(Shoot());
         }
@@ -44,16 +45,16 @@ public class Gun : MonoBehaviour
                 _shotSound?.Play();
             
             
-            canShoot = false;
+            canShootOnAwake = false;
             yield return new WaitForSeconds(delay);
-            canShoot = true;
+            canShootOnAwake = true;
         }
         else if (type == TypeProjectiles.Rocket && rocketPrefab)
         {
             var rocketPref = Instantiate(rocketPrefab, transform.position, transform.rotation);
-            canShoot = false;
+            canShootOnAwake = false;
             yield return new WaitForSeconds(delay);
-            canShoot = true;
+            canShootOnAwake = true;
         }
     }
 

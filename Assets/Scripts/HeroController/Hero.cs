@@ -1,5 +1,4 @@
 using SpaceShooter;
-using System.Collections;
 using UnityEngine;
 
 public class Hero : Destructible
@@ -30,10 +29,7 @@ public class Hero : Destructible
         controller.OnHeroDeath.Invoke();
         base.OnDeath();        
     }
-    private void Update()
-    {
-        //print($"{currentHitPoints}");
-    }
+
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         var shieldBaff = collision.GetComponent<ShieldBaff>();

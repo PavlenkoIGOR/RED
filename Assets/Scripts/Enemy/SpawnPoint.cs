@@ -22,7 +22,11 @@ public class SpawnPoint : MonoBehaviour
             yield return null;
 
         }
-      
-        enm.ActivateShoot();
+        print("i'm shoot");
+        for (int i = 0; i < enm.Guns.Length; i++)
+        {
+            enm.ActivateMove();
+            enm.Guns[i].canShootOnAwake = true;
+        }
     }
 }

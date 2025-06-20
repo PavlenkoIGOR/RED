@@ -708,7 +708,7 @@ MonoBehaviour:
   delay: 1.2
   moveSpeed: 2
   guns:
-  - {fileID: 7323860020587782017}
+  - {fileID: 2462852411906209009}
   enmProjPrefab: {fileID: 7414316952887549102, guid: 2bd72b644148fc843a02b3a5974e4f83, type: 3}
   massiveWards:
   - {x: 1.7, y: 3.7, z: 0}
@@ -717,6 +717,7 @@ MonoBehaviour:
   _animatorsSmoke:
   - {fileID: 7953681978295984571}
   - {fileID: 4344441107439228991}
+  enemyType: 1
 --- !u!82 &7396713540495089884
 AudioSource:
   m_ObjectHideFlags: 0

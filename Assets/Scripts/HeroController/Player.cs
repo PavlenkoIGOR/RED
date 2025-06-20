@@ -37,13 +37,7 @@ using UnityEngine;
 
         private void Respawn()
         {
-            //var newPlayerShip = Instantiate(shipPrefab);
 
-            //_ship = newPlayerShip.GetComponent<SpaceShip>();
-
-            //_cameraController.SetTarget(_ship.transform);
-            //_movementController.SetTargetShip(_ship);
-            //_ship.eventOnDeath.AddListener(OnShipDeath);
         }
 
         public void AddScore(int num)

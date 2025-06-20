@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 namespace SpaceShooter
 {
-    /// <summary>
-    /// Уничтожаемый объект на сцене. То что может иметь хит поинты.
-    /// </summary>
     public class Destructible : Entity
     {
         #region Properties
@@ -100,9 +97,6 @@ namespace SpaceShooter
 
         #endregion
 
-        /// <summary>
-        /// Перепоределяемое событие уничтожения объекта, когда хит поинты ниже нуля.
-        /// </summary>
         protected virtual void OnDeath()
         {
             if (transform.name == "Hero")

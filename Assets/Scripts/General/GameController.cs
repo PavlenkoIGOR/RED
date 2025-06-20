@@ -10,7 +10,7 @@ public enum GameState
 
 public class GameController : MonoBehaviour
 {
-    
+
     [SerializeField] private GameObject _ui;
     [SerializeField] private EnemySpawner spawner;
     [SerializeField] private BaffSpawner _baffSpawner;
@@ -22,9 +22,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private Gun _playerGun;
     [SerializeField] private GameObject _joystick;
 
+    private Vector3 _startPos;
+
     #region gameOver
-    [SerializeField]private GameObject _gameOverScreen;
-    [HideInInspector]public UnityEvent OnHeroDeath;
+    [SerializeField] private GameObject _gameOverScreen;
+    [HideInInspector] public UnityEvent OnHeroDeath;
     #endregion
 
     [SerializeField] private ScoresTMP _scoresTMP;
@@ -36,6 +38,7 @@ public class GameController : MonoBehaviour
     #endregion
     private void Start()
     {
+        _startPos = _playerGun.transform.root.position;
         _gameState = GameState.MainMenu;
         _playerGun.enabled = false;
         _menuPanel.SetActive(true);
@@ -47,11 +50,12 @@ public class GameController : MonoBehaviour
     private protected void Update()
     {
 
-        if (EnemySpawner.enemyesAlive.Count<=0 && _isGameStarted)
+        if (EnemySpawner.enemyesAlive.Count <= 0 && _isGameStarted)
         {
-            if (Player.instance.score - tmpScores >= 60)
+            if (Player.instance.score - tmpScores >= 100)
             {
                 spawner.SpawnBoss();
+                tmpScores = Player.instance.score;
             }
             else
             {
@@ -62,12 +66,15 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        EnemySpawner.enemyesAlive.Clear();
+
         _menuPanel.SetActive(false);
         _isGameStarted = true;
         _playerGun.enabled = true;
         spawner.SpawnRandomEnemyes();
         _joystick.SetActive(true);
         Time.timeScale = 1.0f;
+        _isPause = false;
     }
 
     public void PauseGame()
@@ -85,6 +92,30 @@ public class GameController : MonoBehaviour
             _joystick.SetActive(false);
         }
         _isPause = !_isPause;
+    }
+
+    public void Restart()
+    {
+        if (EnemySpawner.enemyesAlive.Count > 0)
+        {
+            foreach (var enemy in EnemySpawner.enemyesAlive)
+            {
+                if (enemy != null)
+                {
+                    Destroy(enemy.gameObject);
+                }
+            }
+            EnemySpawner.enemyesAlive.Clear();
+        }
+        StartGame();
+
+        // Удаляем все прожектайлы по тегу "Projectile"
+        Projectile[] projectiles = FindObjectsByType<Projectile>(FindObjectsSortMode.None);
+        foreach (var proj in projectiles)
+        {
+            Destroy(proj.gameObject);
+        }
+        _playerGun.transform.root.position = _startPos;
     }
 
     private void GameOverAnim()
