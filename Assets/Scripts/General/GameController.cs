@@ -1,6 +1,7 @@
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 public enum GameState
 {
     MainMenu,
@@ -19,8 +20,11 @@ public class GameController : MonoBehaviour
     private bool _isPause;
     private GameState _gameState;
     [SerializeField] private GameObject _menuPanel;
+    [SerializeField] private Button _startBttn;
+    [SerializeField] private Button _restartBttn;
     [SerializeField] private Gun _playerGun;
     [SerializeField] private GameObject _joystick;
+    [SerializeField] private SpawnPoint _spawnPoint;
 
     private Vector3 _startPos;
 
@@ -43,7 +47,7 @@ public class GameController : MonoBehaviour
         _playerGun.enabled = false;
         _menuPanel.SetActive(true);
         _joystick.SetActive(false);
-
+        _restartBttn.gameObject.SetActive(false);
         OnHeroDeath?.AddListener(GameOverAnim);
     }
 
@@ -66,7 +70,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
-        EnemySpawner.enemyesAlive.Clear();
+        //EnemySpawner.enemyesAlive.Clear();
 
         _menuPanel.SetActive(false);
         _isGameStarted = true;
@@ -84,32 +88,36 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1.0f;
             _menuPanel.SetActive(false);
             _joystick.SetActive(true);
+
         }
         else
         {
             Time.timeScale = 0.0f;
             _menuPanel.SetActive(true);
             _joystick.SetActive(false);
+            _startBttn.gameObject.SetActive(false);
+            _restartBttn?.gameObject.SetActive(true);
         }
         _isPause = !_isPause;
     }
 
     public void Restart()
     {
+        foreach (var spawnPoint in spawner.SpawnPoints)
+        {
+            spawnPoint.StopAllCoroutines();
+        }
+
         if (EnemySpawner.enemyesAlive.Count > 0)
         {
             foreach (var enemy in EnemySpawner.enemyesAlive)
             {
-                if (enemy != null)
-                {
-                    Destroy(enemy.gameObject);
-                }
+                Destroy(enemy.gameObject);
             }
             EnemySpawner.enemyesAlive.Clear();
         }
         StartGame();
 
-        // Удаляем все прожектайлы по тегу "Projectile"
         Projectile[] projectiles = FindObjectsByType<Projectile>(FindObjectsSortMode.None);
         foreach (var proj in projectiles)
         {

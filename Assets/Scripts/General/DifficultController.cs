@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ScoreController : MonoBehaviour 
+public class DifficultController : MonoBehaviour 
 {
     public int scores;
 
