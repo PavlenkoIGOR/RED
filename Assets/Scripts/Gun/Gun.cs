@@ -14,7 +14,7 @@ public class Gun : MonoBehaviour
 
     [Header("Properties")]
     [SerializeField] private TypeProjectiles type;
-    [SerializeField] private float delay;
+    public float delay;
 
     [Header("PrefabsProjectiles")]
     [SerializeField] private Projectile standartPrefab;

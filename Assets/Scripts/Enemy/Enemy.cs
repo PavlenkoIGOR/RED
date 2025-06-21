@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Enemy : Destructible
 {
-    [SerializeField] private float delay;
-    [SerializeField] private float moveSpeed;
+    public float moveSpeed;
     [SerializeField] private Gun[] guns;
     [SerializeField] private Projectile enmProjPrefab;
 

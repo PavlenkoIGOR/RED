@@ -24,9 +24,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private Button _restartBttn;
     [SerializeField] private Gun _playerGun;
     [SerializeField] private GameObject _joystick;
-    [SerializeField] private SpawnPoint _spawnPoint;
+    //[SerializeField] private SpawnPoint _spawnPoint;
 
     private Vector3 _startPos;
+
+    public DifficultController _difficultController;
 
     #region gameOver
     [SerializeField] private GameObject _gameOverScreen;
@@ -70,7 +72,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
-        //EnemySpawner.enemyesAlive.Clear();
+        EnemySpawner.enemyesAlive.Clear();
 
         _menuPanel.SetActive(false);
         _isGameStarted = true;
@@ -79,6 +81,7 @@ public class GameController : MonoBehaviour
         _joystick.SetActive(true);
         Time.timeScale = 1.0f;
         _isPause = false;
+        Player.instance.ResetScores();  
     }
 
     public void PauseGame()
