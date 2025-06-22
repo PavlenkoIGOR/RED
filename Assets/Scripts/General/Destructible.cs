@@ -99,6 +99,12 @@ namespace SpaceShooter
 
         protected virtual void OnDeath()
         {
+            if (transform.tag == "Boss")
+            {
+                DifficultController.level++;
+                DifficultController.OnLevelChange.Invoke();
+            }
+
             if (transform.name == "Hero")
             {
                 ShipController sContr = transform.GetComponent<ShipController>();
@@ -121,6 +127,9 @@ namespace SpaceShooter
             Player.instance.AddScore(scoreValue);
 
             _shipExplosionSound.Play();
+
+
+
 
             m_EventOnDeath?.Invoke();
         }

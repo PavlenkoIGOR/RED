@@ -61,9 +61,7 @@ public class GameController : MonoBehaviour
             if (Player.instance.score - tmpScores >= 100)
             {
                 spawner.SpawnBoss();
-                tmpScores = Player.instance.score;
-                _difficultController.level++;
-                _difficultController.OnLevelChange.Invoke();
+                tmpScores = Player.instance.score;                
             }
             else
             {

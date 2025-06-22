@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1467431113199347733}
   m_Layer: 0
   m_Name: EnemyBoss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,6 @@ MonoBehaviour:
       m_Calls: []
   m_TeamId: 0
   _scoreValue: 50
-  delay: 1
   moveSpeed: 1
   guns:
   - {fileID: 6178337514406983706}

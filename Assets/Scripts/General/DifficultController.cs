@@ -4,9 +4,9 @@ using UnityEngine.Events;
 
 public class DifficultController : MonoBehaviour
 {
-    public byte level = 1;
-    public byte tmpLvl = 1;
-
+    /*[HideInInspector]*/ public static byte level = 1;
+    private byte tmpLvl = 1;
+    /*
     public float heroShootDelay;
     public float enemyShootDelay;
     public float bossShootDelay;
@@ -16,7 +16,7 @@ public class DifficultController : MonoBehaviour
     public float enemyHP;
     public float bossHP;
     public float heroHP;
-
+    */
     [SerializeField] private Enemy _blueEnemy;
     [SerializeField] private Enemy _greenEnemy;
     [SerializeField] private Enemy _purpleEnemy;
@@ -27,15 +27,15 @@ public class DifficultController : MonoBehaviour
     [SerializeField] private float _percentOfDifficultHero = 0.1f;
 
     //public event Action OnLevelChange;
-    public UnityEvent OnLevelChange;
+    public static UnityEvent OnLevelChange = new UnityEvent();
 
     private void Awake()
     {
-        OnLevelChange.AddListener(ChangeDifficult);
+       
     }
     private void Start()
     {
-
+        OnLevelChange.AddListener(ChangeDifficult);
     }
 
     private void ChangeDifficult()
