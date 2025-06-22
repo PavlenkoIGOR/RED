@@ -584,6 +584,8 @@ MonoBehaviour:
   _scoreValue: 0
   _shieldedHeroView: {fileID: 2287397570111188615}
   _mainHeroView: {fileID: 5456718447868819764}
+  guns:
+  - {fileID: 3505275024279819587}
   _shieldDuration: 5
   hasShield: 0
   controller: {fileID: 0}

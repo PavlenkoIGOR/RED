@@ -62,6 +62,8 @@ public class GameController : MonoBehaviour
             {
                 spawner.SpawnBoss();
                 tmpScores = Player.instance.score;
+                _difficultController.level++;
+                _difficultController.OnLevelChange.Invoke();
             }
             else
             {

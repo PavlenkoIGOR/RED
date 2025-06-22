@@ -18,7 +18,7 @@ namespace SpaceShooter
         /// <summary>
         /// Стартовое кол-во хитпоинтов.
         /// </summary>
-        [SerializeField] private int _hitPoints;
+        public int _hitPoints;
         private int _currentHitPoints;
         public int currentHitPoints => _currentHitPoints;
 

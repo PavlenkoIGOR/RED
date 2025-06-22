@@ -611,9 +611,9 @@ RectTransform:
   - {fileID: 1958137156}
   m_Father: {fileID: 1444711092}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540.17303, y: -1124.6157}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &275519873
@@ -862,9 +862,9 @@ RectTransform:
   - {fileID: 1046856706}
   m_Father: {fileID: 1444711092}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540.17303, y: -1454.4622}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &341286502
@@ -1233,9 +1233,9 @@ RectTransform:
   - {fileID: 1789625571}
   m_Father: {fileID: 1444711092}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540.17303, y: -464.92316}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444391211
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   _restartBttn: {fileID: 674601076}
   _playerGun: {fileID: 258265303}
   _joystick: {fileID: 1160176407}
-  _difficultController: {fileID: 0}
+  _difficultController: {fileID: 455053967}
   _gameOverScreen: {fileID: 534247693}
   OnHeroDeath:
     m_PersistentCalls:
@@ -1420,6 +1420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  tmpLvl: 1
   heroShootDelay: 0
   enemyShootDelay: 0
   bossShootDelay: 0
@@ -1434,6 +1435,11 @@ MonoBehaviour:
   _purpleEnemy: {fileID: 3649814201683473985, guid: 60eca38ba7c70c24ca23a5509a45a69b, type: 3}
   _boss: {fileID: 6174404828317823081, guid: 4adc92f83d945b3449902e7488eb5000, type: 3}
   _hero: {fileID: 2044770526}
+  _percentOfDifficultEnemy: 0.5
+  _percentOfDifficultHero: 0.1
+  OnLevelChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,9 +1815,9 @@ RectTransform:
   - {fileID: 12161728}
   m_Father: {fileID: 1444711092}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540.17303, y: -794.7695}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &674601076
