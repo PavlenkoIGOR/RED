@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
             var x = Random.Range(0, enemiesPrefabs.Count);
             var enmPrefab = Instantiate(enemiesPrefabs[x], point.transform.position, Quaternion.identity);
             point.Setposition(enmPrefab);
-            //enemyesAlive.Add(enmPrefab);
+
         }
     }
     public void SpawnBoss()
@@ -26,6 +26,6 @@ public class EnemySpawner : MonoBehaviour
         var x = Random.Range(0, enemiesPrefabs.Count);
         var enmPrefab = Instantiate(_bossPrefab, spawnPoints[Random.Range(0, spawnPoints.Count)].transform.position, Quaternion.identity);
         spawnPoints[Random.Range(0, spawnPoints.Count)].Setposition(enmPrefab);
-        //enemyesAlive.Add(enmPrefab);
+
     }
 }

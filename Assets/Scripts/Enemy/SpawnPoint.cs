@@ -28,6 +28,7 @@ public class SpawnPoint : MonoBehaviour
             enm.ActivateMove();
             enm.Guns[i].canShootOnAwake = true;
         }
+        enm.isDestructible = true;
     }
 
     public void StopCoroutines()

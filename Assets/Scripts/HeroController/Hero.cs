@@ -15,6 +15,7 @@ public class Hero : Destructible
     public float shieldDuration { get => _shieldDuration; set => _shieldDuration = value; }
     [HideInInspector]
     public bool hasShield = false;
+    public bool hasRocket = false;
 
 
     public GameController controller;
@@ -28,16 +29,24 @@ public class Hero : Destructible
     protected override void OnDeath()
     {
         hasShield = false;
+        hasRocket = false;
         controller.OnHeroDeath.Invoke();
         base.OnDeath();        
     }
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        var shieldBaff = collision.GetComponent<ShieldBaff>();
-        if (shieldBaff != null)
+        var baff = collision.GetComponent<BaffEntity>();
+        if (baff != null)
         {
-            hasShield = true;
+            if (baff is ShieldBaff)
+            {
+                hasShield = true;
+            }
+            if (baff is RocketBaff)
+            {
+                hasRocket = true;
+            }
             Destroy(collision.gameObject);
         }
     }

@@ -11,9 +11,9 @@ public enum GameState
 
 public class GameController : MonoBehaviour
 {
-
+    [SerializeField] private DifficultController _difficultController;
     [SerializeField] private GameObject _ui;
-    [SerializeField] private EnemySpawner spawner;
+    [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private BaffSpawner _baffSpawner;
 
     private bool _isGameStarted;
@@ -24,11 +24,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Button _restartBttn;
     [SerializeField] private Gun _playerGun;
     [SerializeField] private GameObject _joystick;
-    //[SerializeField] private SpawnPoint _spawnPoint;
 
     private Vector3 _startPos;
-
-    public DifficultController _difficultController;
 
     #region gameOver
     [SerializeField] private GameObject _gameOverScreen;
@@ -60,12 +57,12 @@ public class GameController : MonoBehaviour
         {
             if (Player.instance.score - tmpScores >= 100)
             {
-                spawner.SpawnBoss();
+                _enemySpawner.SpawnBoss();
                 tmpScores = Player.instance.score;                
             }
             else
             {
-                spawner.SpawnRandomEnemyes();
+                _enemySpawner.SpawnRandomEnemyes();
             }
         }
     }
@@ -77,11 +74,13 @@ public class GameController : MonoBehaviour
         _menuPanel.SetActive(false);
         _isGameStarted = true;
         _playerGun.enabled = true;
-        spawner.SpawnRandomEnemyes();
+        _enemySpawner.SpawnRandomEnemyes();
         _joystick.SetActive(true);
         Time.timeScale = 1.0f;
         _isPause = false;
-        Player.instance.ResetScores();  
+        Player.instance.ResetScores();
+        _baffSpawner.canSpawnShield = true;
+        _baffSpawner.canSpawnRocket = true;
     }
 
     public void PauseGame()
@@ -106,7 +105,7 @@ public class GameController : MonoBehaviour
 
     public void Restart()
     {
-        foreach (var spawnPoint in spawner.SpawnPoints)
+        foreach (var spawnPoint in _enemySpawner.SpawnPoints)
         {
             spawnPoint.StopAllCoroutines();
         }
@@ -136,6 +135,8 @@ public class GameController : MonoBehaviour
         _gameOverScreen.GetComponent<AudioSource>().Play();
         _isGameStarted = false;
         EnemySpawner.enemyesAlive.Clear();
+        _baffSpawner.canSpawnShield = false;
+        _baffSpawner.canSpawnRocket = false;
         OnHeroDeath.RemoveAllListeners();
     }
 }

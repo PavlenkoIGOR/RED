@@ -20,7 +20,8 @@ public class Enemy : Destructible
 
     private void Awake()
     {
-        EnemySpawner.enemyesAlive.Add(this);        
+        EnemySpawner.enemyesAlive.Add(this);
+        isDestructible = false;
     }
 
     public void SmokeAnim()

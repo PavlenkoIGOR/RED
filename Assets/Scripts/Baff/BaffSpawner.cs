@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
-using UnityEngine.InputSystem.LowLevel;
 
 public class BaffSpawner : MonoBehaviour
 {
@@ -23,6 +21,11 @@ public class BaffSpawner : MonoBehaviour
     [SerializeField] private GameObject _droppingRocket;
     private float _timeRocket_tmp = 0;
 
+    [SerializeField]private  bool _canSpawnShield;
+    public  bool canSpawnShield { get => _canSpawnShield; set => _canSpawnShield = value; }
+
+    [SerializeField] private  bool _canSpawnRocket;
+    public  bool canSpawnRocket{ get => _canSpawnRocket; set => _canSpawnRocket = value; }
 
     void Start()
     {
@@ -39,18 +42,23 @@ public class BaffSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_timeShield_tmp >= spawnTime_shield)
+        if (canSpawnShield)
         {
-            var ds = Instantiate(_droppingShield);
-            _droppingShield.transform.position = new Vector2(Random.Range(screenLeft, screenRight), screenTop + 1.0f);
-            _timeShield_tmp = 0;
-            spawnTime_shield = Random.Range(5, spawnTime_shield);
+            if (_timeShield_tmp >= spawnTime_shield)
+            {
+                var ds = Instantiate(_droppingShield);
+                _droppingShield.transform.position = new Vector2(Random.Range(screenLeft, screenRight), screenTop + 1.0f);
+                _timeShield_tmp = 0;
+                spawnTime_shield = Random.Range(5, spawnTime_shield);
+            }
+            else
+            {
+                _timeShield_tmp += Time.deltaTime;
+            }
         }
-        else
+        if (canSpawnRocket)
         {
-            _timeShield_tmp += Time.deltaTime;
-        }
-
+            
         if (_timeRocket_tmp >= spawnTime_Rocket)
         {
             var ds = Instantiate(_droppingRocket);
@@ -62,5 +70,6 @@ public class BaffSpawner : MonoBehaviour
         {
             _timeRocket_tmp += Time.deltaTime;
         }
+    }
     }
 }

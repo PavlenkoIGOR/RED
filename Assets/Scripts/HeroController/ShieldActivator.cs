@@ -32,6 +32,20 @@ public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                 _image.raycastTarget = false;
                 _image.color = _shieldActivatorColor; // важно!
             }
+            /* это для RocketBaff
+            if (_hero.hasRocket == true)
+            {
+                _shieldActivatorColor = new Color(0, 0.5f, 0, 1);
+                _image.raycastTarget = true;
+                _image.color = _shieldActivatorColor; // важно!
+            }
+            if (_hero.hasRocket == false)
+            {
+                _shieldActivatorColor = new Color(0, 0.5f, 0, 0.5f);
+                _image.raycastTarget = false;
+                _image.color = _shieldActivatorColor; // важно!
+            }
+            */
         }
         else
         {
@@ -54,6 +68,16 @@ public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
                 StartCoroutine(ActivateShield(_hero.shieldDuration));
             }
+            /*
+            if (_hero.hasRocket == true)
+            {
+                _shieldActivatorColor = new Color(0, 0.5f, 0, 0.5f);
+                _image.color = _shieldActivatorColor; // важно!
+                _image.raycastTarget = false;
+
+                //TODO: запуск уничтожения врагов
+            }
+            */
         }
     }
 

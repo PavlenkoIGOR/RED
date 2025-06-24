@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2607299656068951866}
   - component: {fileID: 638983276943753574}
   - component: {fileID: 8472542434833974609}
-  - component: {fileID: 5968682078657277833}
+  - component: {fileID: 8090210652791566824}
   m_Layer: 0
-  m_Name: DroppedShieldBaff
+  m_Name: DroppedRocketBaff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7335923186448241409}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5208054, y: 6, z: 0}
+  m_LocalPosition: {x: 2.3918312, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: 21300000, guid: e150511f081a1874499b11996788801c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e811b8d37ca664d41b534b44832e879e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.85, y: 1.08}
   m_EdgeRadius: 0
---- !u!114 &5968682078657277833
+--- !u!114 &8090210652791566824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7335923186448241409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e26d3b0ada623be41b44284a649f16fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 202439bab6dd89f4ab4ea92bf06c93fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _falloffSpeed: 1.5
+  _falloffSpeed: 2
