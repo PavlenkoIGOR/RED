@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player : SingletonBase<Player>
 {
 
+
     [SerializeField] private int _livesQuantity;
 
 

@@ -18,8 +18,6 @@ public class Hero : Destructible
     public bool hasRocket = false;
 
 
-    public GameController controller;
-
     protected override void Start()
     {
         base.Start();
@@ -30,7 +28,7 @@ public class Hero : Destructible
     {
         hasShield = false;
         hasRocket = false;
-        controller.OnHeroDeath.Invoke();
+        GameController.OnHeroDeath.Invoke();
         base.OnDeath();        
     }
 

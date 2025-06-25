@@ -514,7 +514,7 @@ GameObject:
   - component: {fileID: 8833745313026365824}
   m_Layer: 0
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -570,9 +570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb939f5c3077f142b5b9be912cef427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Nickname: Hero
-  _isDestructible: 0
-  _hitPoints: 20
+  m_Nickname: 
+  _isDestructible: 1
+  _hitPoints: 30
   _healthBarMain: {fileID: 3259365586393268507}
   _animShipExplosion: {fileID: 4165257875132155696}
   _viewExplosion: {fileID: 5744340691114814544}
@@ -588,7 +588,7 @@ MonoBehaviour:
   - {fileID: 3505275024279819587}
   _shieldDuration: 5
   hasShield: 0
-  controller: {fileID: 0}
+  hasRocket: 0
 --- !u!50 &404487909800074241
 Rigidbody2D:
   serializedVersion: 5
@@ -753,7 +753,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7739734057968338947}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ab0243ba91949b40b7b67c35347a57e, type: 3}
   m_Name: 

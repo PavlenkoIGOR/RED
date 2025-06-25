@@ -5,53 +5,50 @@ using UnityEngine.UI;
 
 public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField] private Hero _hero;
+    [SerializeField] private GameController _gController;
     private Color _shieldActivatorColor;
     private Image _image;
+    private Hero _hero;
 
     void Start()
     {
+        if (_hero == null)
+        {
+            _hero = _gController.hero.GetComponent<Hero>();
+        }
         _image = GetComponent<Image>();
         _shieldActivatorColor = _image.color;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (_hero.currentHitPoints >= 0)
+        if (_hero == null)
         {
-            if (_hero.hasShield == true)
-            {
-                _shieldActivatorColor = new Color(0, 0.5f, 0, 1);
-                _image.raycastTarget = true;
-                _image.color = _shieldActivatorColor; // важно!
-            }
-            if (_hero.hasShield == false)
-            {
-                _shieldActivatorColor = new Color(0, 0.5f, 0, 0.5f);
-                _image.raycastTarget = false;
-                _image.color = _shieldActivatorColor; // важно!
-            }
-            /* это для RocketBaff
-            if (_hero.hasRocket == true)
-            {
-                _shieldActivatorColor = new Color(0, 0.5f, 0, 1);
-                _image.raycastTarget = true;
-                _image.color = _shieldActivatorColor; // важно!
-            }
-            if (_hero.hasRocket == false)
-            {
-                _shieldActivatorColor = new Color(0, 0.5f, 0, 0.5f);
-                _image.raycastTarget = false;
-                _image.color = _shieldActivatorColor; // важно!
-            }
-            */
+            _hero = _gController.hero.GetComponent<Hero>();
         }
-        else
+        if (_shieldActivatorColor != null)
         {
-            _shieldActivatorColor = new Color(0, 0.5f, 0, 0.5f);
-            _image.raycastTarget = false;
-            _image.color = _shieldActivatorColor; // важно!
+            if (_hero.currentHitPoints >= 0)
+            {
+                if (_hero.hasShield == true)
+                {
+                    _shieldActivatorColor = new Color(0, 0.5f, 0, 1);
+                    _image.raycastTarget = true;
+                    _image.color = _shieldActivatorColor; // важно!
+                }
+                if (_hero.hasShield == false)
+                {
+                    _shieldActivatorColor = new Color(0, 0.5f, 0, 0.5f);
+                    _image.raycastTarget = false;
+                    _image.color = _shieldActivatorColor; // важно!
+                }
+            }
+            else
+            {
+                _shieldActivatorColor = new Color(0, 0.5f, 0, 0.5f);
+                _image.raycastTarget = false;
+                _image.color = _shieldActivatorColor; // важно!
+            }
         }
     }
 
@@ -68,16 +65,6 @@ public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
                 StartCoroutine(ActivateShield(_hero.shieldDuration));
             }
-            /*
-            if (_hero.hasRocket == true)
-            {
-                _shieldActivatorColor = new Color(0, 0.5f, 0, 0.5f);
-                _image.color = _shieldActivatorColor; // важно!
-                _image.raycastTarget = false;
-
-                //TODO: запуск уничтожения врагов
-            }
-            */
         }
     }
 
@@ -92,7 +79,6 @@ public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         _hero.mainHeroView.SetActive(false);
         _hero.isDestructible = false;
 
-        print("asdad");
         yield return new WaitForSeconds(duration);
         _hero.isDestructible = !_hero.isDestructible;
         _hero.shieldedHeroView.SetActive(false);
@@ -100,4 +86,6 @@ public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         _image.raycastTarget = false;
         _hero.hasShield = false;
     }
+
+
 }

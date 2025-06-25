@@ -99,13 +99,14 @@ namespace SpaceShooter
 
         protected virtual void OnDeath()
         {
+            print("onDeath");
             if (transform.tag == "Boss")
             {
                 DifficultController.level++;
                 DifficultController.OnLevelChange.Invoke();
             }
 
-            if (transform.name == "Hero")
+            if (transform.tag == "Player")
             {
                 ShipController sContr = transform.GetComponent<ShipController>();
                 sContr.enabled = false;
@@ -119,21 +120,39 @@ namespace SpaceShooter
                 item.gameObject.SetActive(false);
             }
 
-            _viewExplosion.SetActive(true);
+            ViewExplosionSetActive();
+            ShipExplosionSoundPlay();
 
 
             StartCoroutine(PLayExplosion());
 
             Player.instance.AddScore(scoreValue);
 
-            _shipExplosionSound.Play();
+            
 
 
 
 
             m_EventOnDeath?.Invoke();
         }
+        void ViewExplosionSetActive()
+        {
+            _viewExplosion.SetActive(true);
+        }
+        void ShipExplosionSoundPlay()
+        {
+            _shipExplosionSound.Play();
+        }
 
+
+
+
+
+
+        public void StartDeathEnemy()
+        {
+            OnDeath();
+        }
         [SerializeField] private UnityEvent m_EventOnDeath;
         public UnityEvent EventOnDeath => m_EventOnDeath;
 
@@ -171,8 +190,9 @@ namespace SpaceShooter
         {
             if (_animShipExplosion != null)
             {
-                if (transform.name == "Hero")
+                if (transform.tag == "Player")
                 {
+                    print("heroExplosionAnim");
                     _animShipExplosion.Play("HeroExplosionAnimation");
 
                     float clipLength = default;

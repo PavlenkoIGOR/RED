@@ -21,11 +21,11 @@ public class BaffSpawner : MonoBehaviour
     [SerializeField] private GameObject _droppingRocket;
     private float _timeRocket_tmp = 0;
 
-    [SerializeField]private  bool _canSpawnShield;
-    public  bool canSpawnShield { get => _canSpawnShield; set => _canSpawnShield = value; }
+    [SerializeField] private bool _canSpawnShield;
+    public bool canSpawnShield { get => _canSpawnShield; set => _canSpawnShield = value; }
 
-    [SerializeField] private  bool _canSpawnRocket;
-    public  bool canSpawnRocket{ get => _canSpawnRocket; set => _canSpawnRocket = value; }
+    [SerializeField] private bool _canSpawnRocket;
+    public bool canSpawnRocket { get => _canSpawnRocket; set => _canSpawnRocket = value; }
 
     void Start()
     {
@@ -58,18 +58,17 @@ public class BaffSpawner : MonoBehaviour
         }
         if (canSpawnRocket)
         {
-            
-        if (_timeRocket_tmp >= spawnTime_Rocket)
-        {
-            var ds = Instantiate(_droppingRocket);
-            _droppingRocket.transform.position = new Vector2(Random.Range(screenLeft, screenRight), screenTop + 1.0f);
-            _timeRocket_tmp = 0;
-            spawnTime_shield = Random.Range(5, spawnTime_Rocket);
+            if (_timeRocket_tmp >= spawnTime_Rocket)
+            {
+                var ds = Instantiate(_droppingRocket);
+                _droppingRocket.transform.position = new Vector2(Random.Range(screenLeft, screenRight), screenTop + 1.0f);
+                _timeRocket_tmp = 0;
+                spawnTime_shield = Random.Range(5, spawnTime_Rocket);
+            }
+            else
+            {
+                _timeRocket_tmp += Time.deltaTime;
+            }
         }
-        else
-        {
-            _timeRocket_tmp += Time.deltaTime;
-        }
-    }
     }
 }
