@@ -30,13 +30,13 @@ public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         {
             if (_hero.currentHitPoints >= 0)
             {
-                if (_hero.hasShield == true)
+                if (Player.instance.hasShield == true)
                 {
                     _shieldActivatorColor = new Color(0, 0.5f, 0, 1);
                     _image.raycastTarget = true;
                     _image.color = _shieldActivatorColor; // важно!
                 }
-                if (_hero.hasShield == false)
+                if (Player.instance.hasShield == false)
                 {
                     _shieldActivatorColor = new Color(0, 0.5f, 0, 0.5f);
                     _image.raycastTarget = false;
@@ -57,7 +57,7 @@ public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         if (_hero.currentHitPoints >= 0)
         {
-            if (_hero.hasShield == true)
+            if (Player.instance.hasShield == true)
             {
                 _shieldActivatorColor = new Color(0, 0.5f, 0, 0.5f);
                 _image.color = _shieldActivatorColor; // важно!
@@ -84,7 +84,7 @@ public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         _hero.shieldedHeroView.SetActive(false);
         _hero.mainHeroView.SetActive(true);
         _image.raycastTarget = false;
-        _hero.hasShield = false;
+        Player.instance.hasShield = false;
     }
 
 

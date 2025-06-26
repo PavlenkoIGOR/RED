@@ -28,5 +28,8 @@ public class OptionsControl : MonoBehaviour
         _optionsOpened = !_optionsOpened;
     }
 
-
+    public void ExitApp()
+    {
+        Application.Quit();
+    }
 }

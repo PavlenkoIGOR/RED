@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 6.0f;
 
     [SerializeField] private float minX;
     [SerializeField] private float maxX;

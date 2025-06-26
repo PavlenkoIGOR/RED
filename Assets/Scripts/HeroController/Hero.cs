@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using SpaceShooter;
 using UnityEngine;
 
@@ -13,9 +12,6 @@ public class Hero : Destructible
 
     [SerializeField] private float _shieldDuration;
     public float shieldDuration { get => _shieldDuration; set => _shieldDuration = value; }
-    [HideInInspector]
-    public bool hasShield = false;
-    public bool hasRocket = false;
 
 
     protected override void Start()
@@ -26,8 +22,9 @@ public class Hero : Destructible
     }
     protected override void OnDeath()
     {
-        hasShield = false;
-        hasRocket = false;
+        Player.instance.hasShield = false;
+        Player.instance.hasRocket = false;
+
         GameController.OnHeroDeath.Invoke();
         base.OnDeath();        
     }
@@ -39,11 +36,11 @@ public class Hero : Destructible
         {
             if (baff is ShieldBaff)
             {
-                hasShield = true;
+                Player.instance.hasShield = true;
             }
             if (baff is RocketBaff)
             {
-                hasRocket = true;
+                Player.instance.hasRocket = true;
             }
             Destroy(collision.gameObject);
         }

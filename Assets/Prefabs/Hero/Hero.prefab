@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52a86fbf62569249866d602d58f3708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 6
   minX: -2.2
   maxX: 2.2
   minY: -3.98
@@ -587,8 +587,6 @@ MonoBehaviour:
   guns:
   - {fileID: 3505275024279819587}
   _shieldDuration: 5
-  hasShield: 0
-  hasRocket: 0
 --- !u!50 &404487909800074241
 Rigidbody2D:
   serializedVersion: 5
@@ -875,7 +873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2727064949114378294, guid: 478b5eb6e2899f24dbd40b582f276edc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6501783835250869560, guid: 478b5eb6e2899f24dbd40b582f276edc, type: 3}
       propertyPath: m_LocalPosition.x

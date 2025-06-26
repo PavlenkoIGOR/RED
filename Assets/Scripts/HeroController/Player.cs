@@ -13,13 +13,15 @@ public class Player : SingletonBase<Player>
     public int score => _score;
     public int numKills => _numKills;
     public int numLives => _livesQuantity;
-    // Start is called before the first frame update
+
+    public bool hasShield = false;
+    public bool hasRocket = false;
+
     void Start()
     {
         Respawn();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -27,9 +29,8 @@ public class Player : SingletonBase<Player>
 
     private void OnShipDeath()
     {
-        //Debug.Log("OnshipDeathMethod");
         _livesQuantity--;
-        //Debug.Log($"_livesQuantity {_livesQuantity}");
+
         if (_livesQuantity > 0)
         {
             Respawn();

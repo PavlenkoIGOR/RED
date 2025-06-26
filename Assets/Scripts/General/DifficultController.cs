@@ -87,7 +87,7 @@ public class DifficultController : MonoBehaviour
             
         }
 
-        print("level changed");
+        //print("level changed");
 
             tmpLvl = level;
     }

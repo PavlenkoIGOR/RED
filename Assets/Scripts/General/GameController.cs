@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.nearClipPlane)).x;
         screenBottom = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).y;
         screenTop = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane)).y;
+        _gameOverScreen.SetActive(false);
     }
     private void Start()
     {
@@ -173,13 +174,9 @@ public class GameController : MonoBehaviour
     {
         _ui.SetActive(false);
         _gameOverScreen.SetActive(true);
-        _gameOverScreen.GetComponent<Animator>().Play("GameOverAnim");
-        _gameOverScreen.GetComponent<AudioSource>().Play();
         _isGameStarted = false;
-        // EnemySpawner.enemyesAlive.Clear();
         _baffSpawner.canSpawnShield = false;
         _baffSpawner.canSpawnRocket = false;
-        OnHeroDeath.RemoveAllListeners();
         _menuPanel.SetActive(true);
         _startBttn.gameObject.SetActive(false);
         _restartBttn?.gameObject.SetActive(true);

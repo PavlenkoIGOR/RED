@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class BaffSpawner : MonoBehaviour
 {
-    private int _deviceRes_X;
-    private int _deviceRes_Y;
-
-    // ѕолучение границ видимой области камеры
     float screenLeft;
     float screenRight;
     float screenBottom;
@@ -29,9 +25,6 @@ public class BaffSpawner : MonoBehaviour
 
     void Start()
     {
-        _deviceRes_X = Screen.width;
-        _deviceRes_Y = Screen.height;
-
         // ѕолучение границ видимой области камеры
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).x;
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.nearClipPlane)).x;
@@ -39,7 +32,6 @@ public class BaffSpawner : MonoBehaviour
         screenTop = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane)).y;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (canSpawnShield)

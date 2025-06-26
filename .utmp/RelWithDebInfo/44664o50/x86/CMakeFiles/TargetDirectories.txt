@@ -1,0 +1,8 @@
+D:/CSProjects/Unity/Projects/RED/.utmp/RelWithDebInfo/44664o50/x86/CMakeFiles/edit_cache.dir
+D:/CSProjects/Unity/Projects/RED/.utmp/RelWithDebInfo/44664o50/x86/CMakeFiles/rebuild_cache.dir
+D:/CSProjects/Unity/Projects/RED/.utmp/RelWithDebInfo/44664o50/x86/GameActivity/CMakeFiles/game.dir
+D:/CSProjects/Unity/Projects/RED/.utmp/RelWithDebInfo/44664o50/x86/GameActivity/CMakeFiles/edit_cache.dir
+D:/CSProjects/Unity/Projects/RED/.utmp/RelWithDebInfo/44664o50/x86/GameActivity/CMakeFiles/rebuild_cache.dir
+D:/CSProjects/Unity/Projects/RED/.utmp/RelWithDebInfo/44664o50/x86/FramePacing/CMakeFiles/swappywrapper.dir
+D:/CSProjects/Unity/Projects/RED/.utmp/RelWithDebInfo/44664o50/x86/FramePacing/CMakeFiles/edit_cache.dir
+D:/CSProjects/Unity/Projects/RED/.utmp/RelWithDebInfo/44664o50/x86/FramePacing/CMakeFiles/rebuild_cache.dir

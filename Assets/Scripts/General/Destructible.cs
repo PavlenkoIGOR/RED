@@ -99,7 +99,7 @@ namespace SpaceShooter
 
         protected virtual void OnDeath()
         {
-            print("onDeath");
+            //print("onDeath");
             if (transform.tag == "Boss")
             {
                 DifficultController.level++;
@@ -192,7 +192,7 @@ namespace SpaceShooter
             {
                 if (transform.tag == "Player")
                 {
-                    print("heroExplosionAnim");
+                    //print("heroExplosionAnim");
                     _animShipExplosion.Play("HeroExplosionAnimation");
 
                     float clipLength = default;
