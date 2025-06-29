@@ -653,6 +653,7 @@ GameObject:
   - component: {fileID: 19088817968869179}
   - component: {fileID: 2106819546367984601}
   - component: {fileID: 7396713540495089884}
+  - component: {fileID: 3063257789119788792}
   m_Layer: 3
   m_Name: EnemyGreen
   m_TagString: Untagged
@@ -706,7 +707,6 @@ MonoBehaviour:
       m_Calls: []
   m_TeamId: 0
   _scoreValue: 20
-  delay: 1.2
   moveSpeed: 2
   guns:
   - {fileID: 2462852411906209009}
@@ -816,6 +816,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &3063257789119788792
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6701578349764366851}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1 &6847777855701032655
 GameObject:
   m_ObjectHideFlags: 0

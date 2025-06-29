@@ -44,5 +44,11 @@ public class Hero : Destructible
             }
             Destroy(collision.gameObject);
         }
+
+        if (collision.transform.root.GetComponent<Enemy>())
+        {
+            OnDeath();
+        }
     }
+
 }

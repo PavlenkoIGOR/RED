@@ -267,7 +267,6 @@ MonoBehaviour:
       m_Calls: []
   m_TeamId: 0
   _scoreValue: 10
-  delay: 10.5
   moveSpeed: 1.4
   guns:
   - {fileID: 8964418045218704124}

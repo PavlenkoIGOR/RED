@@ -30,7 +30,7 @@ namespace SpaceShooter
         [SerializeField] private Animator _animShipExplosion;
         [SerializeField] private GameObject _viewExplosion;
         #endregion
-
+        float clipLength = 0;
         [SerializeField] private AudioSource _shipExplosionSound;
         #region Unity events
 
@@ -99,7 +99,6 @@ namespace SpaceShooter
 
         protected virtual void OnDeath()
         {
-            //print("onDeath");
             if (transform.tag == "Boss")
             {
                 DifficultController.level++;
@@ -110,6 +109,8 @@ namespace SpaceShooter
             {
                 ShipController sContr = transform.GetComponent<ShipController>();
                 sContr.enabled = false;
+                //var trigger = GetComponent<CircleCollider2D>();
+                //trigger.enabled = false;
             }
             if (transform.name.Contains("Enemy"))
             {
@@ -195,7 +196,7 @@ namespace SpaceShooter
                     //print("heroExplosionAnim");
                     _animShipExplosion.Play("HeroExplosionAnimation");
 
-                    float clipLength = default;
+                    clipLength = default;
                     RuntimeAnimatorController rac = _animShipExplosion.runtimeAnimatorController;
                     for (int i = 0; i < rac.animationClips.Length; i++)
                     {
@@ -213,7 +214,7 @@ namespace SpaceShooter
                 {
                     _animShipExplosion.Play("BlueShipExplosion");
 
-                    float clipLength = default;
+                    clipLength = default;
                     RuntimeAnimatorController rac = _animShipExplosion.runtimeAnimatorController;
                     for (int i = 0; i < rac.animationClips.Length; i++)
                     {
@@ -229,7 +230,7 @@ namespace SpaceShooter
                 {
                     _animShipExplosion.Play("GreenExplosionAnimation");
 
-                    float clipLength = default;
+                    clipLength = default;
                     RuntimeAnimatorController rac = _animShipExplosion.runtimeAnimatorController;
                     for (int i = 0; i < rac.animationClips.Length; i++)
                     {
@@ -245,7 +246,7 @@ namespace SpaceShooter
                 {
                     _animShipExplosion.Play("VioletShipExplosionaAnimation");
 
-                    float clipLength = default;
+                    clipLength = default;
                     RuntimeAnimatorController rac = _animShipExplosion.runtimeAnimatorController;
                     for (int i = 0; i < rac.animationClips.Length; i++)
                     {
@@ -261,7 +262,7 @@ namespace SpaceShooter
                 {
                     _animShipExplosion.Play("BossExplosionAnim");
 
-                    float clipLength = default;
+                    clipLength = default;
                     RuntimeAnimatorController rac = _animShipExplosion.runtimeAnimatorController;
                     for (int i = 0; i < rac.animationClips.Length; i++)
                     {

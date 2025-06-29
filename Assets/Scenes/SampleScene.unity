@@ -1453,6 +1453,7 @@ MonoBehaviour:
   _startBttn: {fileID: 444391211}
   _restartBttn: {fileID: 674601076}
   _joystick: {fileID: 1160176407}
+  _scoresBetweenBossSpawn: 100
   _gameOverScreen: {fileID: 210890849}
   _scoresTMP: {fileID: 2125076778}
   _spawnTime: 2

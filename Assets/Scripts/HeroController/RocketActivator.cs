@@ -90,6 +90,7 @@ public class RocketActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         Player.instance.hasRocket = false;
         foreach (var enemy in EnemySpawner.enemyesAlive)
         {
+            enemy.moveSpeed = 0;
             enemy.StartDeathEnemy();
         }
     }

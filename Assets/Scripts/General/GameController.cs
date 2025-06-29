@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private Button _startBttn;
     [SerializeField] private Button _restartBttn;
     [SerializeField] private GameObject _joystick;
-
+    [SerializeField] private int _scoresBetweenBossSpawn = 100;
     private Vector3 _startPos;
 
     #region gameOver
@@ -85,7 +85,7 @@ public class GameController : MonoBehaviour
 
         if (EnemySpawner.enemyesAlive.Count <= 0 && _isGameStarted)
         {
-            if (Player.instance.score - tmpScores >= 100)
+            if (Player.instance.score - tmpScores >= _scoresBetweenBossSpawn)
             {
                 _enemySpawner.SpawnBoss();
                 tmpScores = Player.instance.score;
