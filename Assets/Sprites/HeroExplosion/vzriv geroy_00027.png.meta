@@ -1,0 +1,468 @@
+fileFormatVersion: 2
+guid: ff946fe1988389c419bf7c531f16f53c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6038589501782192267
+    second: vzriv geroy_00027_0
+  - first:
+      213: 7027228808445595857
+    second: vzriv geroy_00027_1
+  - first:
+      213: 8784851174359666799
+    second: vzriv geroy_00027_2
+  - first:
+      213: -8298205539394954873
+    second: vzriv geroy_00027_3
+  - first:
+      213: 198155033071963786
+    second: vzriv geroy_00027_4
+  - first:
+      213: -7492164932573730253
+    second: vzriv geroy_00027_5
+  - first:
+      213: 2313001736647464862
+    second: vzriv geroy_00027_6
+  - first:
+      213: 8875158404070548328
+    second: vzriv geroy_00027_7
+  - first:
+      213: -2019055850436547747
+    second: vzriv geroy_00027_8
+  - first:
+      213: -2671575807195784829
+    second: vzriv geroy_00027_9
+  - first:
+      213: -2670489356307500750
+    second: vzriv geroy_00027_10
+  - first:
+      213: 1434093736558731486
+    second: vzriv geroy_00027_11
+  - first:
+      213: -1684994949836520959
+    second: vzriv geroy_00027_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 300
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vzriv geroy_00027_0
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 992
+        width: 67
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b80712678216dc350800000000000000
+      internalID: 6038589501782192267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 882
+        width: 53
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d09ac29e5bb58160800000000000000
+      internalID: 7027228808445595857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_2
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 923
+        width: 81
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f609164599f0ae970800000000000000
+      internalID: 8784851174359666799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_3
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 697
+        width: 74
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7895f27170ad6dc80800000000000000
+      internalID: -8298205539394954873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_4
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 594
+        width: 56
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ec5b4e3fcffb200800000000000000
+      internalID: 198155033071963786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_5
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 615
+        width: 60
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33aed4360bb760890800000000000000
+      internalID: -7492164932573730253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_6
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 536
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e97dbbd13de691020800000000000000
+      internalID: 2313001736647464862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_7
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 465
+        width: 67
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 863a2ffbb85ea2b70800000000000000
+      internalID: 8875158404070548328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_8
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 436
+        width: 61
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5b2e05c66fdaf3e0800000000000000
+      internalID: -2019055850436547747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_9
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 368
+        width: 83
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 389519d35f7acead0800000000000000
+      internalID: -2671575807195784829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_10
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 292
+        width: 135
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23174dc441480fad0800000000000000
+      internalID: -2670489356307500750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_11
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 18
+        width: 61
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed0223eb7ace6e310800000000000000
+      internalID: 1434093736558731486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vzriv geroy_00027_12
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 58
+        width: 91
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 102caa64502bd98e0800000000000000
+      internalID: -1684994949836520959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vzriv geroy_00027_0: 6038589501782192267
+      vzriv geroy_00027_1: 7027228808445595857
+      vzriv geroy_00027_10: -2670489356307500750
+      vzriv geroy_00027_11: 1434093736558731486
+      vzriv geroy_00027_12: -1684994949836520959
+      vzriv geroy_00027_2: 8784851174359666799
+      vzriv geroy_00027_3: -8298205539394954873
+      vzriv geroy_00027_4: 198155033071963786
+      vzriv geroy_00027_5: -7492164932573730253
+      vzriv geroy_00027_6: 2313001736647464862
+      vzriv geroy_00027_7: 8875158404070548328
+      vzriv geroy_00027_8: -2019055850436547747
+      vzriv geroy_00027_9: -2671575807195784829
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

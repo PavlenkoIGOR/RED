@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: 93b3dd900f274534a9a6f2a48d65ed8f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7162731402224896791
+    second: Samalet 3 wzriv_00022_0
+  - first:
+      213: 1162761831316197662
+    second: Samalet 3 wzriv_00022_1
+  - first:
+      213: 4558250680529818632
+    second: Samalet 3 wzriv_00022_2
+  - first:
+      213: -4703120729039794758
+    second: Samalet 3 wzriv_00022_3
+  - first:
+      213: -6237126584194801618
+    second: Samalet 3 wzriv_00022_4
+  - first:
+      213: -1267297683083300424
+    second: Samalet 3 wzriv_00022_5
+  - first:
+      213: 6384031968672983989
+    second: Samalet 3 wzriv_00022_6
+  - first:
+      213: 8140360641884060030
+    second: Samalet 3 wzriv_00022_7
+  - first:
+      213: 1105448880394076697
+    second: Samalet 3 wzriv_00022_8
+  - first:
+      213: 3518717404901710096
+    second: Samalet 3 wzriv_00022_9
+  - first:
+      213: 3092012122914048832
+    second: Samalet 3 wzriv_00022_10
+  - first:
+      213: -5024228189926386659
+    second: Samalet 3 wzriv_00022_11
+  - first:
+      213: 5735294144063279429
+    second: Samalet 3 wzriv_00022_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 300
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1072
+        width: 43
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71b8623b242276360800000000000000
+      internalID: 7162731402224896791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_1
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 1013
+        width: 43
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e111cf999b5f22010800000000000000
+      internalID: 1162761831316197662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_2
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 1056
+        width: 13
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8049922e7d8224f30800000000000000
+      internalID: 4558250680529818632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_3
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 1066
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abd8ec97d982bbeb0800000000000000
+      internalID: -4703120729039794758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 952
+        width: 32
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e206ce9da664179a0800000000000000
+      internalID: -6237126584194801618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 699
+        width: 5
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b1f42fb877a96ee0800000000000000
+      internalID: -1267297683083300424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_6
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 593
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bbad7f5043a89850800000000000000
+      internalID: 6384031968672983989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_7
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 552
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e79f113dfde58f070800000000000000
+      internalID: 8140360641884060030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 148
+        width: 88
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9120e3956e7575f00800000000000000
+      internalID: 1105448880394076697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_9
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 181
+        width: 38
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 019962836def4d030800000000000000
+      internalID: 3518717404901710096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_10
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 127
+        width: 38
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04b4e73c4a809ea20800000000000000
+      internalID: 3092012122914048832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_11
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 0
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d141feca41b564ab0800000000000000
+      internalID: -5024228189926386659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samalet 3 wzriv_00022_12
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 0
+        width: 72
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 541154b13abd79f40800000000000000
+      internalID: 5735294144063279429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Samalet 3 wzriv_00022_0: 7162731402224896791
+      Samalet 3 wzriv_00022_1: 1162761831316197662
+      Samalet 3 wzriv_00022_10: 3092012122914048832
+      Samalet 3 wzriv_00022_11: -5024228189926386659
+      Samalet 3 wzriv_00022_12: 5735294144063279429
+      Samalet 3 wzriv_00022_2: 4558250680529818632
+      Samalet 3 wzriv_00022_3: -4703120729039794758
+      Samalet 3 wzriv_00022_4: -6237126584194801618
+      Samalet 3 wzriv_00022_5: -1267297683083300424
+      Samalet 3 wzriv_00022_6: 6384031968672983989
+      Samalet 3 wzriv_00022_7: 8140360641884060030
+      Samalet 3 wzriv_00022_8: 1105448880394076697
+      Samalet 3 wzriv_00022_9: 3518717404901710096
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

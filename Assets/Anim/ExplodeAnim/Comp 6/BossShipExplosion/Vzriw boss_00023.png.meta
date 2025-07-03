@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: eb658519399729344b683eb323fbbc41
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -932252491936487245
+    second: Vzriw boss_00023_0
+  - first:
+      213: -7330486478287883380
+    second: Vzriw boss_00023_1
+  - first:
+      213: -4667265562611002485
+    second: Vzriw boss_00023_2
+  - first:
+      213: -281844834284167108
+    second: Vzriw boss_00023_3
+  - first:
+      213: -8621857543197064632
+    second: Vzriw boss_00023_4
+  - first:
+      213: 3921068983518185370
+    second: Vzriw boss_00023_5
+  - first:
+      213: -6732796739386235102
+    second: Vzriw boss_00023_6
+  - first:
+      213: 4483975484691539853
+    second: Vzriw boss_00023_7
+  - first:
+      213: 4754657871134975629
+    second: Vzriw boss_00023_8
+  - first:
+      213: 2592213669526954132
+    second: Vzriw boss_00023_9
+  - first:
+      213: -4255919508047196294
+    second: Vzriw boss_00023_10
+  - first:
+      213: 4512461583659087317
+    second: Vzriw boss_00023_11
+  - first:
+      213: 3523967583416494286
+    second: Vzriw boss_00023_12
+  - first:
+      213: -4454704158167450546
+    second: Vzriw boss_00023_13
+  - first:
+      213: -3757298705837651864
+    second: Vzriw boss_00023_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 300
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Vzriw boss_00023_0
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1587
+        width: 199
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b827214c49ff03f0800000000000000
+      internalID: -932252491936487245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_1
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 1735
+        width: 208
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c83b8d6f261e44a90800000000000000
+      internalID: -7330486478287883380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_2
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1279
+        width: 245
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b835824f2ba8a3fb0800000000000000
+      internalID: -4667265562611002485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_3
+      rect:
+        serializedVersion: 2
+        x: 1582
+        y: 1305
+        width: 148
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c30a6b2dd9fa61cf0800000000000000
+      internalID: -281844834284167108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_4
+      rect:
+        serializedVersion: 2
+        x: 1739
+        y: 1176
+        width: 128
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84287b9be32095880800000000000000
+      internalID: -8621857543197064632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_5
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 1300
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a97476e377f6a6630800000000000000
+      internalID: 3921068983518185370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_6
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 1228
+        width: 36
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 227a9f3990d4092a0800000000000000
+      internalID: -6732796739386235102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 757
+        width: 199
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d87699a32f74a3e30800000000000000
+      internalID: 4483975484691539853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_8
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 887
+        width: 172
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d86e38d7420fbf140800000000000000
+      internalID: 4754657871134975629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_9
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 833
+        width: 253
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 490e01a299469f320800000000000000
+      internalID: 2592213669526954132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_10
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 553
+        width: 131
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7f013a91cfefe4c0800000000000000
+      internalID: -4255919508047196294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_11
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 533
+        width: 97
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d5b89cf6eb7f9e30800000000000000
+      internalID: 4512461583659087317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_12
+      rect:
+        serializedVersion: 2
+        x: 1623
+        y: 645
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec82889a8d5a7e030800000000000000
+      internalID: 3523967583416494286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_13
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 452
+        width: 266
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4c39f09b26bd22c0800000000000000
+      internalID: -4454704158167450546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vzriw boss_00023_14
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 0
+        width: 108
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 868038bebb46bdbc0800000000000000
+      internalID: -3757298705837651864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Vzriw boss_00023_0: -932252491936487245
+      Vzriw boss_00023_1: -7330486478287883380
+      Vzriw boss_00023_10: -4255919508047196294
+      Vzriw boss_00023_11: 4512461583659087317
+      Vzriw boss_00023_12: 3523967583416494286
+      Vzriw boss_00023_13: -4454704158167450546
+      Vzriw boss_00023_14: -3757298705837651864
+      Vzriw boss_00023_2: -4667265562611002485
+      Vzriw boss_00023_3: -281844834284167108
+      Vzriw boss_00023_4: -8621857543197064632
+      Vzriw boss_00023_5: 3921068983518185370
+      Vzriw boss_00023_6: -6732796739386235102
+      Vzriw boss_00023_7: 4483975484691539853
+      Vzriw boss_00023_8: 4754657871134975629
+      Vzriw boss_00023_9: 2592213669526954132
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
