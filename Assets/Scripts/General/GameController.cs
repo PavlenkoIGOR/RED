@@ -1,6 +1,7 @@
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public enum GameState
 {
@@ -11,6 +12,9 @@ public enum GameState
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private GameObject _leftFinishPos;
+    [SerializeField] private GameObject _rightFinishPos;
+    [SerializeField] private GameObject _menuCanvas;
     [SerializeField] private GameObject _heroPref;
     [SerializeField] private DifficultController _difficultController;
     [SerializeField] private GameObject _ui;
@@ -24,6 +28,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Button _startBttn;
     [SerializeField] private Button _restartBttn;
     [SerializeField] private GameObject _joystick;
+    [SerializeField] private Button _pauseBttn;  
+    private Vector2 stickStartPos;
 
     private Vector3 _startPos;
 
@@ -55,13 +61,24 @@ public class GameController : MonoBehaviour
     {
         _deviceRes_X = Screen.width;
         _deviceRes_Y = Screen.height;
+        _ui.GetComponent<CanvasScaler>().referenceResolution = new Vector2(_deviceRes_X, _deviceRes_Y);
+        _menuCanvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(_deviceRes_X, _deviceRes_Y);
 
-        // ѕолучение границ видимой области камеры
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).x;
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.nearClipPlane)).x;
         screenBottom = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).y;
         screenTop = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane)).y;
+
+        _leftFinishPos.transform.position = new Vector2(screenLeft + 0.4f, _leftFinishPos.transform.position.y);
+        _rightFinishPos.transform.position = new Vector2(screenRight - 0.4f, _rightFinishPos.transform.position.y);
+
+
         _gameOverScreen.SetActive(false);
+        foreach (Transform uiChild in _ui.transform)
+        {
+            uiChild.gameObject.SetActive(false);
+        }
+        stickStartPos = _joystick.transform.Find("Stick").position;
     }
     private void Start()
     {
@@ -75,23 +92,23 @@ public class GameController : MonoBehaviour
             gun.enabled = false;
         }
         _menuPanel.SetActive(true);
-        _joystick.SetActive(false);
         _restartBttn.gameObject.SetActive(false);
         OnHeroDeath?.AddListener(GameOverAnim);
     }
 
     private protected void Update()
     {
-
         if (EnemySpawner.enemyesAlive.Count <= 0 && _isGameStarted)
         {
-            if (Player.instance.score - tmpScores >= 100)
+            if (Player.instance.score - tmpScores >= 60)
             {
                 _enemySpawner.SpawnBoss();
                 tmpScores = Player.instance.score;
+                print("boss spawn");
             }
             else
             {
+                print("enemies spawn");
                 _enemySpawner.SpawnRandomEnemyes();
             }
         }
@@ -110,10 +127,12 @@ public class GameController : MonoBehaviour
             gun.enabled = true;
         }
 
-
+        foreach (Transform uiChild in _ui.transform)
+        {
+            uiChild.gameObject.SetActive(true);
+        }
 
         _enemySpawner.SpawnRandomEnemyes();
-        _joystick.SetActive(true);
         Time.timeScale = 1.0f;
         _isPause = false;
         Player.instance.ResetScores();
@@ -128,16 +147,25 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1.0f;
             _menuPanel.SetActive(false);
             _joystick.SetActive(true);
-
+            foreach (Transform uiChild in _ui.transform)
+            {
+                uiChild.gameObject.SetActive(true);
+            }
         }
         else
         {
+            foreach (Transform uiChild in _ui.transform)
+            {
+                uiChild.gameObject.SetActive(false);
+            }
+
             Time.timeScale = 0.0f;
             _menuPanel.SetActive(true);
-            _joystick.SetActive(false);
+            _scoresTMP.enabled = true;           
             _startBttn.gameObject.SetActive(false);
             _restartBttn?.gameObject.SetActive(true);
         }
+        _pauseBttn.gameObject.SetActive(true);
         _isPause = !_isPause;
     }
 
@@ -163,21 +191,38 @@ public class GameController : MonoBehaviour
         {
             Destroy(proj.gameObject);
         }
-
+        if (hero != null) 
+        {
+            Destroy(hero);
+        }
         hero = Instantiate(_heroPref, _startPos, Quaternion.identity);
+        
+           
 
         StartGame();
         _gameOverScreen.SetActive(false);
+        _joystick.transform.Find("Stick").position = stickStartPos;
+        VirtualJoystick.Value = Vector2.zero;
     }
 
     private void GameOverAnim()
     {
-        _ui.SetActive(false);
+        foreach (Transform uiChild in _ui.transform)
+        {
+            uiChild.gameObject.SetActive(false);
+        }
         _gameOverScreen.SetActive(true);
         _isGameStarted = false;
         _baffSpawner.canSpawnShield = false;
         _baffSpawner.canSpawnRocket = false;
+
         _menuPanel.SetActive(true);
+        var saundBG = _menuPanel.transform.Find("Sound_BG");
+        if (saundBG != null)
+        {
+            saundBG.gameObject.SetActive(false);
+        }
+
         _startBttn.gameObject.SetActive(false);
         _restartBttn?.gameObject.SetActive(true);
     }

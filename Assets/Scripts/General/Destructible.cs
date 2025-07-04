@@ -34,10 +34,17 @@ namespace SpaceShooter
         [SerializeField] private AudioSource _shipExplosionSound;
         #region Unity events
 
+
+
+
+
         protected virtual void Start()
         {
             _currentHitPoints = _hitPoints;
             _originalSizeY = _healthBarMain.size.y;
+
+
+
         }
 
         #region Безтеговая коллекция скриптов на сцене
@@ -127,11 +134,6 @@ namespace SpaceShooter
             StartCoroutine(PLayExplosion());
 
             Player.instance.AddScore(scoreValue);
-
-            
-
-
-
 
             m_EventOnDeath?.Invoke();
         }

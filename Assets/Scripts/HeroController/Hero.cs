@@ -20,6 +20,11 @@ public class Hero : Destructible
         _shieldedHeroView.SetActive(false);
 
     }
+
+    private void Update()
+    {
+        SmokeAnim();
+    }
     protected override void OnDeath()
     {
         Player.instance.hasShield = false;
@@ -43,6 +48,28 @@ public class Hero : Destructible
                 Player.instance.hasRocket = true;
             }
             Destroy(collision.gameObject);
+        }
+        if (collision.transform.root.GetComponent<Enemy>())
+        {
+            OnDeath();
+        }
+    }
+
+
+    [SerializeField] private Animator[] _animatorsSmoke;
+    public void SmokeAnim()
+    {
+        if (_animatorsSmoke != null)
+        {
+                if (healthBarMain.size.y <= _originalSizeY / 3 * 2 & healthBarMain.size.y > _originalSizeY / 3)
+                {
+                    _animatorsSmoke[0].Play("SmokeAnim1");
+                }
+                if (healthBarMain.size.y <= _originalSizeY / 3)
+                {
+                    _animatorsSmoke[1].Play("SmokeAnim1");
+                }
+            
         }
     }
 }

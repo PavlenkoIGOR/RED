@@ -14,8 +14,8 @@ public class DifficultController : MonoBehaviour
     [SerializeField] private Enemy _boss;
     [SerializeField] private Hero _hero;
 
-    [SerializeField] private float _percentOfDifficultEnemy = 0.5f;
-    [SerializeField] private float _percentOfDifficultHero = 0.1f;
+    [SerializeField] private float _percentOfDifficultEnemy = 0.2f;
+    [SerializeField] private float _percentOfDifficultHero = 0.2f;
 
     private float _heroDelay;
     private float _blueEnemyDelay;
@@ -23,6 +23,11 @@ public class DifficultController : MonoBehaviour
     private float _purpleEnemyDelay;
     private float _bossEnemyDelay;
 
+    private float _heroHealth;
+    private float _blueEnemyHealth;
+    private float _greenEnemyHealth;
+    private float _purpleEnemyHealth;
+    private float _bossHealth;
     //public event Action OnLevelChange;
     public static UnityEvent OnLevelChange = new UnityEvent();
 
@@ -48,6 +53,12 @@ public class DifficultController : MonoBehaviour
         {
             _heroDelay = gun.delay;
         }
+
+        _heroHealth = _hero._hitPoints;
+        _blueEnemyHealth = _blueEnemy._hitPoints;
+        _greenEnemyHealth = _greenEnemy._hitPoints;
+        _purpleEnemyHealth = _purpleEnemy._hitPoints;
+        _bossHealth = _boss._hitPoints;
     }
     private void Start()
     {
@@ -84,7 +95,6 @@ public class DifficultController : MonoBehaviour
             _greenEnemy._hitPoints = _greenEnemy._hitPoints * (int)_percentOfDifficultEnemy + _greenEnemy._hitPoints;
             _purpleEnemy._hitPoints = _purpleEnemy._hitPoints * (int)_percentOfDifficultEnemy + _purpleEnemy._hitPoints;
 
-            
         }
 
         //print("level changed");

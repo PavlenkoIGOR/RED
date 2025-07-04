@@ -13,19 +13,35 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnRandomEnemyes()
     {
-        foreach (var point in spawnPoints)
+        // Создаем копию списка, чтобы не менять оригинал
+        List<Enemy> shuffledPrefabs = new List<Enemy>(enemiesPrefabs);
+        // Перемешиваем список
+        for (int i = 0; i < shuffledPrefabs.Count; i++)
         {
-            var x = Random.Range(0, enemiesPrefabs.Count);
-            var enmPrefab = Instantiate(enemiesPrefabs[x], point.transform.position, Quaternion.identity);
-            point.Setposition(enmPrefab);
+            int randIndex = Random.Range(i, shuffledPrefabs.Count);
+            Enemy temp = shuffledPrefabs[i];
+            shuffledPrefabs[i] = shuffledPrefabs[randIndex];
+            shuffledPrefabs[randIndex] = temp;
+        }
 
+        int countToSpawn = Mathf.Min(spawnPoints.Count, shuffledPrefabs.Count);
+
+        for (int i = 0; i < countToSpawn; i++)
+        {
+            var point = spawnPoints[i];
+            var prefab = shuffledPrefabs[i];
+            var enmPrefab = Instantiate(prefab, point.transform.position, Quaternion.identity);
+            point.Setposition(enmPrefab);
+            enemyesAlive.Add(enmPrefab);
         }
     }
     public void SpawnBoss()
     {
-        var x = Random.Range(0, enemiesPrefabs.Count);
-        var enmPrefab = Instantiate(_bossPrefab, spawnPoints[Random.Range(0, spawnPoints.Count)].transform.position, Quaternion.identity);
-        spawnPoints[Random.Range(0, spawnPoints.Count)].Setposition(enmPrefab);
-
+        int index = Random.Range(0, spawnPoints.Count);
+        var spawnPoint = spawnPoints[index];
+        print($"{index}");
+        var enmPrefab = Instantiate(_bossPrefab, spawnPoint.transform.position, Quaternion.identity);
+        spawnPoint.Setposition(enmPrefab);
+        enemyesAlive.Add(enmPrefab);
     }
 }

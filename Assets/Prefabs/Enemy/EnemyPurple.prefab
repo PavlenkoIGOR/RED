@@ -375,7 +375,6 @@ MonoBehaviour:
       m_Calls: []
   m_TeamId: 0
   _scoreValue: 30
-  delay: 1
   moveSpeed: 3
   guns:
   - {fileID: 6928759696682656772}
@@ -866,7 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  delay: 0.8
+  delay: 1.2
   standartPrefab: {fileID: 7414316952887549102, guid: 2bd72b644148fc843a02b3a5974e4f83, type: 3}
   rocketPrefab: {fileID: 8166964359682777437, guid: 9179b23858a84c54f87598f3f710d64c, type: 3}
   canShootOnAwake: 0
@@ -1030,7 +1029,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

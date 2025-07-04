@@ -18,9 +18,33 @@ public class Enemy : Destructible
 
     public Gun[] Guns { get { return guns; } }
 
+
+
+
+    float screenLeft;
+    float screenRight;
+    float screenBottom;
+    float screenTop;
+
+
     private void Awake()
     {
-        EnemySpawner.enemyesAlive.Add(this);
+        screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).x;
+        screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.nearClipPlane)).x;
+        screenBottom = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).y;
+        screenTop = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane)).y;
+
+
+        // Исправление: изменение компонента x через временную переменную
+        Vector3 temp = massiveWards[0];
+        temp.x = screenLeft + 0.3f;
+        massiveWards[0] = temp;
+
+        temp = massiveWards[massiveWards.Count-1];
+        temp.x = screenRight - 0.3f;
+        massiveWards[massiveWards.Count - 1] = temp;
+
+        //EnemySpawner.enemyesAlive.Add(this);
         isDestructible = false;
     }
 
@@ -63,6 +87,11 @@ public class Enemy : Destructible
         SmokeAnim();
     }
 
+    protected override void OnDeath()
+    {
+        moveSpeed = 0;
+        base.OnDeath();
+    }
     protected override void OnDestroy()
     {        
         if (healthBarMain.size.y <= 0)
