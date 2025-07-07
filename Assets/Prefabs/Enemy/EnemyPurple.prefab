@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  delay: 1.2
+  delay: 1.5
   standartPrefab: {fileID: 7414316952887549102, guid: 2bd72b644148fc843a02b3a5974e4f83, type: 3}
   rocketPrefab: {fileID: 8166964359682777437, guid: 9179b23858a84c54f87598f3f710d64c, type: 3}
   canShootOnAwake: 0

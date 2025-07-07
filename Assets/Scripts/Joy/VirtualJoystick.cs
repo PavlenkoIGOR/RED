@@ -11,39 +11,50 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
     public Vector2 stickStartPos;
     public static Vector2 Value { get; set; }
 
+    public static bool isActive = true;
+    private Vector2 touchOffset; // Смещение от точки касания к центру объекта
+    [SerializeField] private Hero _hero;
+    [SerializeField] private float minX;
+    [SerializeField] private float maxX;
+
+    [SerializeField] private float minY;
+    [SerializeField] private float maxY;
+    void Update()
+    { 
+        //if (isActive == false) transform.gameObject.SetActive(false);
+    }
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 position = Vector2.zero;
+        //if (isActive)
+        //{
+            Vector2 position = Vector2.zero;
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(m_JoyBack.rectTransform, eventData.position, eventData.pressEventCamera, out position);
-
-
-        position.x = (position.x / m_JoyBack.rectTransform.sizeDelta.x);
-        position.y = (position.y / m_JoyBack.rectTransform.sizeDelta.y);
-
-        position.x = position.x * 2 - 1;
-        position.y = position.y * 2 - 1;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(m_JoyBack.rectTransform, eventData.position, eventData.pressEventCamera, out position);
 
 
+            position.x = (position.x / m_JoyBack.rectTransform.sizeDelta.x);
+            position.y = (position.y / m_JoyBack.rectTransform.sizeDelta.y);
+
+            position.x = position.x * 2 - 1;
+            position.y = position.y * 2 - 1;
+
+            Value = new Vector2(position.x, position.y);
+
+            if (Value.magnitude > 1)
+            {
+                Value = Value.normalized;
+            }
+
+            float offsetX = m_JoyBack.rectTransform.sizeDelta.x / 2 - m_JoyStick.rectTransform.sizeDelta.x / 2;
+            float offsetY = m_JoyBack.rectTransform.sizeDelta.y / 2 - m_JoyStick.rectTransform.sizeDelta.y / 2;
 
 
-        Value = new Vector2(position.x, position.y);
-
-        if (Value.magnitude > 1)
-        {
-            Value = Value.normalized;
-        }
-
-        float offsetX = m_JoyBack.rectTransform.sizeDelta.x / 2 - m_JoyStick.rectTransform.sizeDelta.x / 2;
-        float offsetY = m_JoyBack.rectTransform.sizeDelta.y / 2 - m_JoyStick.rectTransform.sizeDelta.y / 2;
-
-
-        m_JoyStick.rectTransform.anchoredPosition = new Vector2(Value.x * offsetX, Value.y * offsetY);
+            m_JoyStick.rectTransform.anchoredPosition = new Vector2(Value.x * offsetX, Value.y * offsetY);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        OnDrag(eventData);
+            OnDrag(eventData);
     }
 
     public void OnPointerUp(PointerEventData eventData)

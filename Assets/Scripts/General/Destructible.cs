@@ -109,8 +109,8 @@ namespace SpaceShooter
             //print("onDeath");
             if (transform.tag == "Boss")
             {
-                DifficultController.level++;
-                DifficultController.OnLevelChange.Invoke();
+                //DifficultController.level++;
+                DifficultController.OnBossDestroyChangeDifficult.Invoke();
             }
 
             if (transform.tag == "Player")

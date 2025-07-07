@@ -5,7 +5,8 @@ using UnityEngine.Events;
 public class DifficultController : MonoBehaviour
 {
     [SerializeField] private BaffSpawner _baffSpawner;
-    /*[HideInInspector]*/ public static byte level = 1;
+
+    public byte level = 0; //change in Distructible
     private byte tmpLvl = 1;
 
     [SerializeField] private Enemy _blueEnemy;
@@ -14,8 +15,8 @@ public class DifficultController : MonoBehaviour
     [SerializeField] private Enemy _boss;
     [SerializeField] private Hero _hero;
 
-    [SerializeField] private float _percentOfDifficultEnemy = 0.2f;
-    [SerializeField] private float _percentOfDifficultHero = 0.2f;
+    [SerializeField] private float _percentOfDifficultEnemy = 0.02f;
+    [SerializeField] private float _percentOfDifficultHero = 0.04f;
 
     private float _heroDelay;
     private float _blueEnemyDelay;
@@ -23,16 +24,23 @@ public class DifficultController : MonoBehaviour
     private float _purpleEnemyDelay;
     private float _bossEnemyDelay;
 
-    private float _heroHealth;
-    private float _blueEnemyHealth;
-    private float _greenEnemyHealth;
-    private float _purpleEnemyHealth;
-    private float _bossHealth;
+    private int _heroHealth;
+    private int _blueEnemyHealth;
+    private int _greenEnemyHealth;
+    private int _purpleEnemyHealth;
+    private int _bossHealth;
+
+    #region timer
+    public float _timer_tmp { get; set; } = 0;
+    public float _spawnTime = 10.0f;
+    #endregion
     //public event Action OnLevelChange;
-    public static UnityEvent OnLevelChange = new UnityEvent();
+    public static UnityEvent OnBossDestroyChangeDifficult = new UnityEvent();
 
     private void Awake()
     {
+        //_blueEnemy.canSpawn = true;
+        level = 0;
         foreach (Gun gun in _blueEnemy.Guns)
         {
             _blueEnemyDelay = gun.delay;
@@ -62,49 +70,51 @@ public class DifficultController : MonoBehaviour
     }
     private void Start()
     {
-        OnLevelChange.AddListener(ChangeDifficult);
+        OnBossDestroyChangeDifficult.AddListener(ChangeDifficult);
     }
 
     private void ChangeDifficult()
     {
-        if (tmpLvl != level)
+        foreach (Gun gun in _blueEnemy.Guns)
         {
-            foreach (Gun gun in _blueEnemy.Guns) 
-            {
-                gun.delay = gun.delay - gun.delay * _percentOfDifficultEnemy;
-            }
-            foreach (Gun gun in _greenEnemy.Guns)
-            {
-                gun.delay = gun.delay - gun.delay * _percentOfDifficultEnemy;
-            }
-            foreach (Gun gun in _purpleEnemy.Guns)
-            {
-                gun.delay = gun.delay - gun.delay * _percentOfDifficultEnemy;
-            }
-            foreach (Gun gun in _boss.Guns)
-            {
-                gun.delay = gun.delay - gun.delay * _percentOfDifficultEnemy;
-            }
-            foreach (Gun gun in _hero.guns)
-            {
-                gun.delay = gun.delay - gun.delay * _percentOfDifficultHero;
-            }
-
-            _boss._hitPoints = _boss._hitPoints * (int)_percentOfDifficultEnemy + _boss._hitPoints;
-            _blueEnemy._hitPoints = _blueEnemy._hitPoints * (int)_percentOfDifficultEnemy + _blueEnemy._hitPoints;
-            _greenEnemy._hitPoints = _greenEnemy._hitPoints * (int)_percentOfDifficultEnemy + _greenEnemy._hitPoints;
-            _purpleEnemy._hitPoints = _purpleEnemy._hitPoints * (int)_percentOfDifficultEnemy + _purpleEnemy._hitPoints;
-
+            gun.delay = gun.delay - gun.delay * _percentOfDifficultEnemy;
+        }
+        foreach (Gun gun in _greenEnemy.Guns)
+        {
+            gun.delay = gun.delay - gun.delay * _percentOfDifficultEnemy;
+        }
+        foreach (Gun gun in _purpleEnemy.Guns)
+        {
+            gun.delay = gun.delay - gun.delay * _percentOfDifficultEnemy;
+        }
+        foreach (Gun gun in _boss.Guns)
+        {
+            gun.delay = gun.delay - gun.delay * _percentOfDifficultEnemy;
+        }
+        foreach (Gun gun in _hero.guns)
+        {
+            gun.delay = gun.delay - gun.delay * _percentOfDifficultHero;
         }
 
-        //print("level changed");
+        _boss._hitPoints = _boss._hitPoints * (int)_percentOfDifficultEnemy + _boss._hitPoints;
+        _blueEnemy._hitPoints = _blueEnemy._hitPoints * (int)_percentOfDifficultEnemy + _blueEnemy._hitPoints;
+        _greenEnemy._hitPoints = _greenEnemy._hitPoints * (int)_percentOfDifficultEnemy + _greenEnemy._hitPoints;
+        _purpleEnemy._hitPoints = _purpleEnemy._hitPoints * (int)_percentOfDifficultEnemy + _purpleEnemy._hitPoints;
 
-            tmpLvl = level;
+
+        _spawnTime -= 0.05f;
+
+        tmpLvl = level;
     }
     private void OnDestroy()
     {
-        OnLevelChange.RemoveAllListeners();
+        OnBossDestroyChangeDifficult.RemoveAllListeners();
 
+        ResetParams();
+    }
+
+    public void ResetParams()
+    {
         foreach (Gun gun in _blueEnemy.Guns)
         {
             gun.delay = _blueEnemyDelay;
@@ -125,5 +135,13 @@ public class DifficultController : MonoBehaviour
         {
             gun.delay = _heroDelay;
         }
+
+        _boss._hitPoints = _bossHealth;
+        _blueEnemy._hitPoints = _blueEnemyHealth;
+        _greenEnemy._hitPoints = _greenEnemyHealth;
+        _purpleEnemy._hitPoints = _purpleEnemyHealth;
+
+        level = 0;
     }
+
 }

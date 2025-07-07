@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy : Destructible
 {
     public float moveSpeed;
+    //public bool canSpawn { get; set; } = false;
     [SerializeField] private Gun[] guns;
     [SerializeField] private Projectile enmProjPrefab;
 

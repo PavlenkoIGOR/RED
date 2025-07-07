@@ -1,7 +1,6 @@
-using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public enum GameState
 {
@@ -21,6 +20,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private BaffSpawner _baffSpawner;
 
+
     private bool _isGameStarted;
     private bool _isPause;
     private GameState _gameState;
@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private Button _startBttn;
     [SerializeField] private Button _restartBttn;
     [SerializeField] private GameObject _joystick;
-    [SerializeField] private Button _pauseBttn;  
+    [SerializeField] private Button _pauseBttn;
     private Vector2 stickStartPos;
 
     private Vector3 _startPos;
@@ -41,10 +41,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private ScoresTMP _scoresTMP;
     int tmpScores = default;
 
-    #region timer
-    float _timer_tmp = 0;
-    [SerializeField] float _spawnTime = 2.0f;
-    #endregion
+
 
 
     private int _deviceRes_X;
@@ -55,10 +52,12 @@ public class GameController : MonoBehaviour
     float screenBottom;
     float screenTop;
 
-    [HideInInspector]public GameObject hero;
+    [HideInInspector] public GameObject hero;
 
     private void Awake()
     {
+
+
         _deviceRes_X = Screen.width;
         _deviceRes_Y = Screen.height;
         _ui.GetComponent<CanvasScaler>().referenceResolution = new Vector2(_deviceRes_X, _deviceRes_Y);
@@ -68,6 +67,7 @@ public class GameController : MonoBehaviour
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.nearClipPlane)).x;
         screenBottom = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).y;
         screenTop = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane)).y;
+
 
         _leftFinishPos.transform.position = new Vector2(screenLeft + 0.4f, _leftFinishPos.transform.position.y);
         _rightFinishPos.transform.position = new Vector2(screenRight - 0.4f, _rightFinishPos.transform.position.y);
@@ -82,7 +82,7 @@ public class GameController : MonoBehaviour
     }
     private void Start()
     {
-        _startPos = new Vector2((screenRight + screenLeft )/ 2, (screenTop+ screenBottom) / 2);
+        _startPos = new Vector2((screenRight + screenLeft) / 2, (screenTop + screenBottom) / 2);
         _gameState = GameState.MainMenu;
 
         hero = Instantiate(_heroPref, _startPos, Quaternion.identity);
@@ -96,30 +96,84 @@ public class GameController : MonoBehaviour
         OnHeroDeath?.AddListener(GameOverAnim);
     }
 
+    private bool isBossActive = false; // флаг, что босс активен
+    private float spawnTimer = 0f;
     private protected void Update()
     {
-        if (EnemySpawner.enemyesAlive.Count <= 0 && _isGameStarted)
+        //_difficultController.CheckSpawnPosibility();
+        print($"level {_difficultController.level}");
+
+
+        if (_difficultController.level < 10 & _isGameStarted == true)
         {
-            if (Player.instance.score - tmpScores >= 60)
+            // Логика для уровней ниже 10
+            if (EnemySpawner.enemyesAlive.Count <= 0 && _isGameStarted)
             {
-                _enemySpawner.SpawnBoss();
-                tmpScores = Player.instance.score;
-                print("boss spawn");
+                _difficultController.level++;
+                if (Player.instance.score - tmpScores >= 500)
+                {
+                    _enemySpawner.SpawnBoss();
+                    tmpScores = Player.instance.score;
+                    isBossActive = true; // активируем босс
+                }
+                else
+                {
+                    _enemySpawner.SpawnRandomEnemyes(_difficultController.level);
+                }
+                
+            }
+        }
+        else
+        {
+            // Уровень >= 10
+            if (isBossActive)
+            {
+                // Ждем пока босс и все враги не убиты
+                if (EnemySpawner.enemyesAlive.Count == 0)
+                {
+                    // Все враги и босс убиты — цикл можно начать заново
+                    isBossActive = false;
+                    spawnTimer = 0f;
+                }
             }
             else
             {
-                print("enemies spawn");
-                _enemySpawner.SpawnRandomEnemyes();
+                // Нет активного босса — проверяем условие для вызова босса
+                if (Player.instance.score - tmpScores >= 500)
+                {
+                    // Перед вызовом босса убедимся, что все враги убиты
+                    if (EnemySpawner.enemyesAlive.Count == 0)
+                    {
+                        _enemySpawner.SpawnBoss();
+                        tmpScores = Player.instance.score;
+                        isBossActive = true; // активируем босса
+                    }
+                    // Если враги еще есть — ждем их уничтожения
+                }
+                else
+                {
+                    // Спавним врагов через интервал _spawnTime
+                    spawnTimer += Time.deltaTime;
+                    if (spawnTimer >= _difficultController._spawnTime)
+                    {
+                        spawnTimer = 0f;
+                        _enemySpawner.SpawnRandomEnemyes(_difficultController.level);
+                    }
+                }
             }
         }
     }
 
     public void StartGame()
     {
+        _isGameStarted = true;
+
+
+        _difficultController.level = 1;
+        //_difficultController.CheckSpawnPosibility();
         EnemySpawner.enemyesAlive.Clear();
 
         _menuPanel.SetActive(false);
-        _isGameStarted = true;
 
 
         foreach (var gun in hero.GetComponent<Hero>().guns)
@@ -129,10 +183,15 @@ public class GameController : MonoBehaviour
 
         foreach (Transform uiChild in _ui.transform)
         {
-            uiChild.gameObject.SetActive(true);
+            //if (uiChild.GetComponent<VirtualJoystick>() is not VirtualJoystick)
+            //{
+                uiChild.gameObject.SetActive(true);
+            //}            
         }
 
-        _enemySpawner.SpawnRandomEnemyes();
+        _enemySpawner.SpawnRandomEnemyes(_difficultController.level);
+
+
         Time.timeScale = 1.0f;
         _isPause = false;
         Player.instance.ResetScores();
@@ -161,7 +220,7 @@ public class GameController : MonoBehaviour
 
             Time.timeScale = 0.0f;
             _menuPanel.SetActive(true);
-            _scoresTMP.enabled = true;           
+            _scoresTMP.enabled = true;
             _startBttn.gameObject.SetActive(false);
             _restartBttn?.gameObject.SetActive(true);
         }
@@ -171,6 +230,7 @@ public class GameController : MonoBehaviour
 
     public void Restart()
     {
+        _difficultController.ResetParams();
         foreach (var spawnPoint in _enemySpawner.SpawnPoints)
         {
             spawnPoint.StopAllCoroutines();
@@ -184,25 +244,27 @@ public class GameController : MonoBehaviour
             }
             EnemySpawner.enemyesAlive.Clear();
         }
-        
+
 
         Projectile[] projectiles = FindObjectsByType<Projectile>(FindObjectsSortMode.None);
         foreach (var proj in projectiles)
         {
             Destroy(proj.gameObject);
         }
-        if (hero != null) 
+        if (hero != null)
         {
             Destroy(hero);
         }
         hero = Instantiate(_heroPref, _startPos, Quaternion.identity);
-        
-           
+
+
 
         StartGame();
         _gameOverScreen.SetActive(false);
         _joystick.transform.Find("Stick").position = stickStartPos;
         VirtualJoystick.Value = Vector2.zero;
+
+
     }
 
     private void GameOverAnim()
