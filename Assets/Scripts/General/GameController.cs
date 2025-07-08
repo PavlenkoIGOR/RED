@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private BaffSpawner _baffSpawner;
 
 
-    private bool _isGameStarted;
+    private bool _isGameStarted = false;
     private bool _isPause;
     private GameState _gameState;
     [SerializeField] private GameObject _menuPanel;
@@ -100,10 +100,6 @@ public class GameController : MonoBehaviour
     private float spawnTimer = 0f;
     private protected void Update()
     {
-        //_difficultController.CheckSpawnPosibility();
-        print($"level {_difficultController.level}");
-
-
         if (_difficultController.level < 10 & _isGameStarted == true)
         {
             // Логика для уровней ниже 10
@@ -123,7 +119,7 @@ public class GameController : MonoBehaviour
                 
             }
         }
-        else
+        else if(_difficultController.level >= 10 & _isGameStarted == true)
         {
             // Уровень >= 10
             if (isBossActive)
@@ -134,6 +130,7 @@ public class GameController : MonoBehaviour
                     // Все враги и босс убиты — цикл можно начать заново
                     isBossActive = false;
                     spawnTimer = 0f;
+                    _enemySpawner.SpawnRandomEnemyes(_difficultController.level);
                 }
             }
             else
@@ -170,7 +167,6 @@ public class GameController : MonoBehaviour
 
 
         _difficultController.level = 1;
-        //_difficultController.CheckSpawnPosibility();
         EnemySpawner.enemyesAlive.Clear();
 
         _menuPanel.SetActive(false);

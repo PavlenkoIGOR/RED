@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Hero : Destructible
 {
+    [SerializeField] public Collider2D _heroCollider;
     [SerializeField]private GameObject _shieldedHeroView;
     [SerializeField]private GameObject _mainHeroView;
     public Gun[] guns;

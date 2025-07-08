@@ -697,11 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52a86fbf62569249866d602d58f3708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  minX: -4
-  maxX: 4
-  minY: -8
-  maxY: 8
+  speed: 4
 --- !u!114 &23037539539908249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,7 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Nickname: 
-  _isDestructible: 1
+  _isDestructible: 0
   _hitPoints: 30
   _healthBarMain: {fileID: 3259365586393268507}
   _animShipExplosion: {fileID: 4165257875132155696}
@@ -726,6 +722,7 @@ MonoBehaviour:
       m_Calls: []
   m_TeamId: 0
   _scoreValue: 0
+  _heroCollider: {fileID: 8894698476678337729}
   _shieldedHeroView: {fileID: 2287397570111188615}
   _mainHeroView: {fileID: 5456718447868819764}
   guns:

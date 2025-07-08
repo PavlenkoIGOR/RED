@@ -6,44 +6,37 @@ using UnityEngine.UIElements;
 public class FingerControl : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     [SerializeField] private Hero _hero;
+    [SerializeField] private Camera _camera;
+    [SerializeField] private RectTransform _rectTransform;
     public static Vector2 Value { get; set; }
+    Vector2 dir;
+
     Vector2 localPoint;
     public void OnDrag(PointerEventData eventData)
     {
         print($"value {Value}");
         OnPointerDown(eventData);
-        DrawVector();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        RectTransform rectTransform = GetComponent<RectTransform>();
+        // Получаем локальные координаты внутри RectTransform
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(_rectTransform, eventData.position, Camera.main, out localPoint);
 
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out localPoint))
+        // Преобразуем локальные координаты в мировые
+        Vector3 worldPos = _rectTransform.TransformPoint(localPoint);
+        Debug.Log($"heroPos {_hero.transform.position}");
+        Debug.Log($"pointPos {worldPos}");
+        // Проверяем попадание в Collider2D
+        if (_hero._heroCollider.OverlapPoint(new Vector2(worldPos.x, worldPos.y)))
         {
-            Vector2 size = rectTransform.rect.size; // Используем rect.size вместо sizeDelta
-
-            // Предположим, что хотим нормализовать в диапазон [-1, 1]
-            float normalizedX = localPoint.x / size.x;
-            float normalizedY = localPoint.y / size.y;
-
-            Value = new Vector2(normalizedX, normalizedY);
+            Debug.Log("inn");
         }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         Value = Vector2.zero;
-    }
-
-    void DrawVector()
-    {
-        // Внутри метода Update или другого метода
-        Vector3 startPoint = localPoint; // или любая точка
-        Vector3 direction = localPoint - (Vector2)_hero.transform.position; // пример вектора
-        float length = 5f; // длина линии
-
-        // Нарисовать линию из startPoint в направлении direction
-        Debug.DrawLine(_hero.transform.position, startPoint, Color.red);
+        dir = Vector2.zero;
     }
 }
