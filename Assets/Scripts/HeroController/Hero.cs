@@ -14,7 +14,7 @@ public class Hero : Destructible
     [SerializeField] private float _shieldDuration;
     public float shieldDuration { get => _shieldDuration; set => _shieldDuration = value; }
 
-
+    //public FingerControl fingerControl;
     protected override void Start()
     {
         base.Start();

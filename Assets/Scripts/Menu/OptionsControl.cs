@@ -4,15 +4,26 @@ using UnityEngine.UI;
 
 public class OptionsControl : MonoBehaviour
 {
-    [SerializeField]    private GameObject _menuPanel;
-    [SerializeField]    private GameObject _optionsPanel;
-    [SerializeField]    private Slider _sliderVolume;
-    [SerializeField]    private TMP_Text _textVolumeValue;
-    private bool _optionsOpened;
+    [Header("AUDIO")]
+    [SerializeField] private GameObject _menuPanel;
+    [SerializeField] private GameObject _optionsPanel;
+    [SerializeField] private Slider _sliderVolume;
+    [SerializeField] private TMP_Text _textVolumeValue;
+    
+    private bool _optionsOpened = false;
 
+    [Header("CONTROLS")]
+    public Slider _controlSlider;
+
+    [SerializeField] private Hero _hero;
+    [SerializeField] private Button _pauseBttn;
+    public Button startBttn;
+    public Button restartBttn;
     void Start()
     {
-        
+        _controlSlider.value = 0; // 0- finger
+        startBttn.gameObject.SetActive(true);
+        restartBttn?.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -25,6 +36,10 @@ public class OptionsControl : MonoBehaviour
     {
         _optionsPanel.SetActive(!_optionsOpened);
         _menuPanel.SetActive(_optionsOpened);
+        if (GameController._isGameStarted)
+        {
+            _pauseBttn.gameObject.SetActive(_optionsOpened);
+        }
         _optionsOpened = !_optionsOpened;
     }
 

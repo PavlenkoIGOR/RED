@@ -9,11 +9,15 @@ public enum GameState
     Pause
 }
 
-public class GameController : MonoBehaviour
+public class GameController : SingletonBase<GameController>
 {
     [SerializeField] private GameObject _leftFinishPos;
     [SerializeField] private GameObject _rightFinishPos;
     [SerializeField] private GameObject _menuCanvas;
+    [SerializeField] private GameObject _menu;
+    [SerializeField] private GameObject _menuPanel;
+    [SerializeField] private GameObject _optionsPanel;
+    [SerializeField] private GameObject _soundBG;
     [SerializeField] private GameObject _heroPref;
     [SerializeField] private DifficultController _difficultController;
     [SerializeField] private GameObject _ui;
@@ -21,12 +25,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private BaffSpawner _baffSpawner;
 
 
-    private bool _isGameStarted = false;
-    private bool _isPause;
+    public static bool _isGameStarted = false;
+    public static bool _isPause;
     private GameState _gameState;
-    [SerializeField] private GameObject _menuPanel;
-    [SerializeField] private Button _startBttn;
-    [SerializeField] private Button _restartBttn;
+
+
     [SerializeField] private GameObject _joystick;
     [SerializeField] private Button _pauseBttn;
     private Vector2 stickStartPos;
@@ -41,7 +44,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private ScoresTMP _scoresTMP;
     int tmpScores = default;
 
-
+    private OptionsControl _optionsControl;
 
 
     private int _deviceRes_X;
@@ -53,9 +56,12 @@ public class GameController : MonoBehaviour
     float screenTop;
 
     [HideInInspector] public GameObject hero;
+    private FingerControl _fingerControl;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        _optionsControl = _menu.GetComponent<OptionsControl>();
 
 
         _deviceRes_X = Screen.width;
@@ -87,12 +93,12 @@ public class GameController : MonoBehaviour
 
         hero = Instantiate(_heroPref, _startPos, Quaternion.identity);
 
+
         foreach (Gun gun in hero.GetComponent<Hero>().guns)
         {
             gun.enabled = false;
         }
-        _menuPanel.SetActive(true);
-        _restartBttn.gameObject.SetActive(false);
+        _menu.SetActive(true);
         OnHeroDeath?.AddListener(GameOverAnim);
     }
 
@@ -116,10 +122,10 @@ public class GameController : MonoBehaviour
                 {
                     _enemySpawner.SpawnRandomEnemyes(_difficultController.level);
                 }
-                
+
             }
         }
-        else if(_difficultController.level >= 10 & _isGameStarted == true)
+        else if (_difficultController.level >= 10 & _isGameStarted == true)
         {
             // Уровень >= 10
             if (isBossActive)
@@ -169,7 +175,9 @@ public class GameController : MonoBehaviour
         _difficultController.level = 1;
         EnemySpawner.enemyesAlive.Clear();
 
-        _menuPanel.SetActive(false);
+        _menuPanel.gameObject.SetActive(false);
+        _optionsPanel.gameObject.SetActive(false);
+        _soundBG.gameObject.SetActive(false);
 
 
         foreach (var gun in hero.GetComponent<Hero>().guns)
@@ -177,17 +185,11 @@ public class GameController : MonoBehaviour
             gun.enabled = true;
         }
 
-        foreach (Transform uiChild in _ui.transform)
-        {
-            //if (uiChild.GetComponent<VirtualJoystick>() is not VirtualJoystick)
-            //{
-                uiChild.gameObject.SetActive(true);
-            //}            
-        }
+        ApplyControl();
 
         _enemySpawner.SpawnRandomEnemyes(_difficultController.level);
 
-
+        _pauseBttn.gameObject.SetActive(true);
         Time.timeScale = 1.0f;
         _isPause = false;
         Player.instance.ResetScores();
@@ -197,31 +199,26 @@ public class GameController : MonoBehaviour
 
     public void PauseGame()
     {
-        if (_isPause)
+        if (!_isPause)
         {
-            Time.timeScale = 1.0f;
-            _menuPanel.SetActive(false);
-            _joystick.SetActive(true);
-            foreach (Transform uiChild in _ui.transform)
-            {
-                uiChild.gameObject.SetActive(true);
-            }
+            Time.timeScale = 0.0f;
+            _menuPanel.SetActive(true);
+            _optionsPanel.SetActive(false);
+            _soundBG.SetActive(true);
+            _optionsControl.startBttn.gameObject.SetActive(false);
+            _optionsControl.restartBttn.gameObject.SetActive(true);
         }
         else
         {
-            foreach (Transform uiChild in _ui.transform)
-            {
-                uiChild.gameObject.SetActive(false);
-            }
-
-            Time.timeScale = 0.0f;
-            _menuPanel.SetActive(true);
+            Time.timeScale = 1.0f;
+            _menuPanel.SetActive(false);
+            _optionsPanel.SetActive(false);
+            _soundBG.gameObject.SetActive(false);
             _scoresTMP.enabled = true;
-            _startBttn.gameObject.SetActive(false);
-            _restartBttn?.gameObject.SetActive(true);
         }
-        _pauseBttn.gameObject.SetActive(true);
+
         _isPause = !_isPause;
+        ApplyControl();
     }
 
     public void Restart()
@@ -254,13 +251,14 @@ public class GameController : MonoBehaviour
         hero = Instantiate(_heroPref, _startPos, Quaternion.identity);
 
 
-
         StartGame();
         _gameOverScreen.SetActive(false);
+
+
         _joystick.transform.Find("Stick").position = stickStartPos;
         VirtualJoystick.Value = Vector2.zero;
 
-
+        ApplyControl();
     }
 
     private void GameOverAnim()
@@ -275,13 +273,65 @@ public class GameController : MonoBehaviour
         _baffSpawner.canSpawnRocket = false;
 
         _menuPanel.SetActive(true);
-        var saundBG = _menuPanel.transform.Find("Sound_BG");
+        _isGameStarted = false;
+        var saundBG = _menu.transform.Find("Sound_BG");
         if (saundBG != null)
         {
             saundBG.gameObject.SetActive(false);
         }
 
-        _startBttn.gameObject.SetActive(false);
-        _restartBttn?.gameObject.SetActive(true);
+
+    }
+
+
+
+
+
+
+
+
+    void ApplyControl()
+    {
+        if (_isGameStarted && _isPause == false)
+        {
+            if (_optionsControl._controlSlider.value == 0) // finger
+            {
+                foreach (Transform uiChild in _ui.transform)
+                {
+                    if (uiChild.GetComponent<FingerControl>())
+                    {
+                        uiChild.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        uiChild.gameObject.SetActive(false);
+                    }
+
+                }
+            }
+
+            if (_optionsControl._controlSlider.value == 1) // joystick
+            {
+                foreach (Transform uiChild in _ui.transform)
+                {
+                    if (uiChild.GetComponent<FingerControl>())
+                    {
+                        uiChild.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        uiChild.gameObject.SetActive(true);
+                    }
+
+                }
+            }
+        }
+        if (_isGameStarted && _isPause == true)
+        {
+            foreach (Transform uiChild in _ui.transform)
+            {
+                uiChild.gameObject?.SetActive(false);
+            }
+        }
     }
 }

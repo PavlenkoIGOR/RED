@@ -62,10 +62,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
         Value = Vector2.zero;
 
         m_JoyStick.rectTransform.anchoredPosition = Vector2.zero;
-
     }
-
-
 }
 
 
