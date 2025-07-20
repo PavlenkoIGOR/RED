@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField] private GameController _gController;
     private Color _shieldActivatorColor;
     private Image _image;
     private Hero _hero;
@@ -14,7 +13,7 @@ public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         if (_hero == null)
         {
-            _hero = _gController.hero.GetComponent<Hero>();
+            _hero = GameController.instance.hero.GetComponent<Hero>();
         }
         _image = GetComponent<Image>();
         _shieldActivatorColor = _image.color;
@@ -24,7 +23,8 @@ public class ShieldActivator : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         if (_hero == null)
         {
-            _hero = _gController.hero.GetComponent<Hero>();
+            
+            _hero = GameController.instance.hero.GetComponent<Hero>();
         }
         if (_shieldActivatorColor != null)
         {

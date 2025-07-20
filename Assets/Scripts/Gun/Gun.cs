@@ -28,7 +28,7 @@ public class Gun : MonoBehaviour
    [SerializeField] private AudioSource _shotSound;
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (canShootOnAwake)
         {

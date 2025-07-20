@@ -36,7 +36,7 @@ public class OptionsControl : MonoBehaviour
     {
         _optionsPanel.SetActive(!_optionsOpened);
         _menuPanel.SetActive(_optionsOpened);
-        if (GameController._isGameStarted)
+        if (GameController.instance.isGameStarted)
         {
             _pauseBttn.gameObject.SetActive(_optionsOpened);
         }

@@ -24,7 +24,7 @@ public class ShipController : MonoBehaviour
     {
         Move();
 
-
+        //GameController.instance.
         //UpdateTargetPosition();
     }
 

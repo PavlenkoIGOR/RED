@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Hero : Destructible
 {
+    public Canvas _canvasControls;
     [SerializeField] public Collider2D _heroCollider;
     [SerializeField]private GameObject _shieldedHeroView;
     [SerializeField]private GameObject _mainHeroView;
@@ -25,6 +26,14 @@ public class Hero : Destructible
     private void Update()
     {
         SmokeAnim();
+        if (!GameController.instance.isJoystickControl && GameController.instance.isGameStarted && !GameController.instance._isPause)
+        {
+            _canvasControls.gameObject.SetActive(true);
+        }
+        else
+        {
+            _canvasControls.gameObject.SetActive(false);
+        }
     }
     protected override void OnDeath()
     {

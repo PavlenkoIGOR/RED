@@ -1,131 +1,85 @@
+
+
+
+using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class FingerControl : MonoBehaviour
 {
-    [SerializeField] private Hero _hero;
-    float _deltaX, _deltaY;
-    Rigidbody2D _rb;
+    private Hero _hero;
     bool _moveAllowed = false;
 
 
-
-    private Collider2D _collider;
-    private bool _isHovered = false;
-
     public RectTransform rectTransform; // Укажите ваш RectTransform
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        InstantiateRB(_hero);
+    public Sprite knobSprite;
 
+
+
+
+
+    [SerializeField] TMP_Text testText;
+    private Vector2 touchPosition;
+
+
+    void OnEnable()
+    {
+        EnhancedTouchSupport.Enable();
+        TouchSimulation.Enable();
     }
 
-    public void InstantiateRB(Hero hero)
+    void OnDisable()
     {
-        _rb = hero.GetComponent<Rigidbody2D>();
-        if (_rb)
-        {
-            print($"rb {_rb.name}");
-        }
+        EnhancedTouchSupport.Disable();
+        TouchSimulation.Disable();
     }
+
     // Update is called once per frame
     void Update()
     {
-        //InstantiateRB(_hero);
-        //if (Input.touchCount > 0)
-        //{
-        //    Touch touch = Input.GetTouch(0);
-        //    Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-
-        //    switch (touch.phase)
-        //    {
-        //        case TouchPhase.Began:
-        //            if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
-        //            {
-        //                _deltaX = touchPos.x - transform.position.x;
-        //                _deltaY = touchPos.y - transform.position.y;
-
-        //                _moveAllowed = true;
-
-        //                _rb.freezeRotation = true;
-        //            }
-        //            break;
-        //        case TouchPhase.Moved:
-        //            if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos) && _moveAllowed)
-        //            {
-        //                _rb.MovePosition(new Vector2(touchPos.x - _deltaX, touchPos.y - _deltaY));
-        //            }
-        //            break;
-        //        case TouchPhase.Ended:
-        //            _moveAllowed = false;
-        //            _rb.freezeRotation = true;
-        //            break;
-        //    }
-        //}
-        // Проверяем, есть ли курсор(мышь или указатель)
-
-
-
-
-        if (Mouse.current != null)
+        if (UnityEngine.InputSystem.Touchscreen.current != null && UnityEngine.InputSystem.Touchscreen.current.primaryTouch.press.isPressed)
         {
-            Vector2 screenPos = Mouse.current.position.ReadValue();
+            var touch = UnityEngine.InputSystem.Touchscreen.current.primaryTouch;
+            touchPosition = touch.position.ReadValue();
 
-            Vector2 localPoint;
+            Vector2 worldTouchPos = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.nearClipPlane));
+            UnityEngine.InputSystem.TouchPhase phase = touch.phase.ReadValue();
 
-            
-            //print($"screenPos {screenPos}");
-            //print($"hero {_hero.transform.position}");
-            // Преобразуем экранные координаты в локальные для RectTransform
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, screenPos, Camera.main, out localPoint))
+            switch (phase)
             {
-                //print($"localPoint {localPoint}");
-                // Теперь localPoint — локальные координаты внутри rectTransform
-                
-                // Можно проверить, внутри ли границ rectTransform
-                //if (rectTransform.rect.Contains(localPoint))
-                if (_hero._heroCollider.OverlapPoint(screenPos))
-                {
-                    if (!_isHovered)
+                case UnityEngine.InputSystem.TouchPhase.Began:
+                    // Проверка коллайдера при начале касания
+                    Collider2D collider = Physics2D.OverlapCircle(worldTouchPos, 0.1f);
+                    if (collider != null)
                     {
-                        _isHovered = true;
-                        OnHoverEnter();
+                        _hero = collider.transform.root.GetComponent<Hero>();
+                        if (_hero != null)
+                        {
+                            _moveAllowed = true;
+                        }
                     }
-                }
-                else
-                {
-                    if (_isHovered)
+                    break;
+
+                case UnityEngine.InputSystem.TouchPhase.Moved:
+                case UnityEngine.InputSystem.TouchPhase.Stationary:
+                    if (_moveAllowed && _hero != null)
                     {
-                        _isHovered = false;
-                        OnHoverExit();
+                        // Двигаем героя за текущую позицию касания
+                        _hero.transform.position = worldTouchPos;
                     }
-                }
+                    break;
+
+                case UnityEngine.InputSystem.TouchPhase.Ended:
+                case UnityEngine.InputSystem.TouchPhase.Canceled:
+                    _moveAllowed = false;
+                    break;
             }
-
         }
-    }
-    private void OnHoverEnter()
-    {
-
-        var go = _hero.transform.Find("GO");
-        if (go != null)
+        else
         {
-            //Debug.Log($"{go.name}");
-            go.gameObject.SetActive(true);
-        }
-        // Ваш код при наведении
-    }
-
-    private void OnHoverExit()
-    {
-        var go = _hero.transform.Find("GO");
-        if (go != null)
-        {
-            //Debug.Log("уход с объекта");
-            go.gameObject.SetActive(false);
+            // Если нет касания или оно отпущено, останавливаем движение
+            _moveAllowed = false;
         }
     }
 }

@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "New Actions",
+    "maps": [
+        {
+            "name": "touch",
+            "id": "8b70a7ca-4d21-4733-9095-c09540ca6be9",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "aa61a944-60b3-4a78-b67d-5a459af92111",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4eb59e87-5489-43c0-b6e7-c032fb47caf6",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
