@@ -23,6 +23,9 @@ public class CanvasControl : MonoBehaviour
         if (_hero != null)
         {
             deltaX = _hero.transform.position.x - previousPosition.x;
+
+            #region для смещения канвас при упирании в границы экрана
+
             if (deltaX < 0 && transform.position.x - rectTransform.rect.width * rectTransform.lossyScale.x / 2 <= GameController.screenLeft
                 ||
                 deltaX > 0 && transform.position.x + rectTransform.rect.width * rectTransform.lossyScale.x / 2 >= GameController.screenRight)
@@ -31,8 +34,11 @@ public class CanvasControl : MonoBehaviour
                 transform.position = new Vector3(transform.position.x - deltaX, transform.position.y, transform.position.z);
             }
 
+            #endregion
 
-            if (deltaX>0 && transform.position.x + rectTransform.rect.width * rectTransform.lossyScale.x / 2 <= GameController.screenRight && transform.localPosition.x != 0)
+            if (deltaX>0 && transform.position.x + rectTransform.rect.width * rectTransform.lossyScale.x / 2 <= GameController.screenRight && transform.localPosition.x >= 0
+                ||
+                deltaX < 0 && transform.position.x - rectTransform.rect.width * rectTransform.lossyScale.x / 2 >= GameController.screenLeft && transform.localPosition.x <= 0)
             {
                 transform.position = new Vector3(transform.position.x - deltaX, transform.position.y, transform.position.z);
                 if (isCollide == false && deltaX > Mathf.Abs(previousPosition.x - transform.position.x))
@@ -40,8 +46,6 @@ public class CanvasControl : MonoBehaviour
                     transform.localPosition = new Vector3(0, transform.localPosition.y, transform.localPosition.z);
                 }
             }
-
-
 
 
             previousPosition = _hero.transform.position;
