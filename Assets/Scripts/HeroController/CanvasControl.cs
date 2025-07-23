@@ -7,6 +7,9 @@ public class CanvasControl : MonoBehaviour
     private float canvasWidth;
     float deltaX;
     private Vector3 previousPosition;
+
+
+    bool isCollide;
     void Start()
     {       
         if (_hero != null)
@@ -23,26 +26,100 @@ public class CanvasControl : MonoBehaviour
             if (deltaX < 0 && transform.position.x - rectTransform.rect.width * rectTransform.lossyScale.x / 2 <= GameController.screenLeft
                 ||
                 deltaX > 0 && transform.position.x + rectTransform.rect.width * rectTransform.lossyScale.x / 2 >= GameController.screenRight)
-            {               
-                print($"out {deltaX}");
-                transform.position = new Vector3(transform.position.x - deltaX, transform.position.y, transform.position.z);                   
+            {
+                isCollide = true;
+                transform.position = new Vector3(transform.position.x - deltaX, transform.position.y, transform.position.z);
             }
 
-            if (deltaX > 0 && transform.position.x - rectTransform.rect.width * rectTransform.lossyScale.x / 2 >= GameController.screenLeft)
+
+            if (deltaX>0 && transform.position.x + rectTransform.rect.width * rectTransform.lossyScale.x / 2 <= GameController.screenRight && transform.localPosition.x != 0)
             {
-                print($"out 2 {deltaX}");
-                if (deltaX < previousPosition.x - transform.position.x)
+                transform.position = new Vector3(transform.position.x - deltaX, transform.position.y, transform.position.z);
+                if (isCollide == false && deltaX > Mathf.Abs(previousPosition.x - transform.position.x))
                 {
                     transform.localPosition = new Vector3(0, transform.localPosition.y, transform.localPosition.z);
                 }
-                else
-                {
-                    transform.position = new Vector3(transform.position.x - deltaX, transform.position.y, transform.position.z);
-                }
             }
+
+
+
 
             previousPosition = _hero.transform.position;
         }
 
+
+
+
+
+
+        //if (_hero != null)
+        //{
+        //    deltaX = _hero.transform.position.x - previousPosition.x;
+        //    if (deltaX < 0 && transform.position.x - rectTransform.rect.width * rectTransform.lossyScale.x / 2 <= GameController.screenLeft
+        //        ||
+        //        deltaX > 0 && transform.position.x + rectTransform.rect.width * rectTransform.lossyScale.x / 2 >= GameController.screenRight)
+        //    {
+        //        isCollide = true;                
+        //    }
+
+        //    //else if (deltaX > 0 && transform.position.x - rectTransform.rect.width * rectTransform.lossyScale.x / 2 >= GameController.screenLeft
+        //    //    &&
+        //    //        transform.localPosition != new Vector3(0, transform.localPosition.y, transform.localPosition.z)
+        //    //        ||
+        //    //        deltaX < 0 && transform.position.x + rectTransform.rect.width * rectTransform.lossyScale.x / 2 <= GameController.screenRight
+        //    //        &&
+        //    //        transform.localPosition != new Vector3(0, transform.localPosition.y, transform.localPosition.z))
+        //    //{
+        //    //    isCollide=false;
+        //    //}
+        //    //if (isCollide == false && deltaX > 0)
+        //    //{
+        //    //    if (deltaX > previousPosition.x - transform.position.x)
+        //    //    {
+        //    //        transform.localPosition = new Vector3(0, transform.localPosition.y, transform.localPosition.z);
+        //    //        isCollide = false;
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        transform.position = new Vector3(transform.position.x - deltaX, transform.position.y, transform.position.z);
+        //    //    }
+        //    //}
+        //    //else if (isCollide == false && deltaX < 0)
+        //    //{
+        //    //    if (deltaX > previousPosition.x - transform.position.x)
+        //    //    {
+        //    //        transform.localPosition = new Vector3(0, transform.localPosition.y, transform.localPosition.z);
+        //    //        isCollide = false;
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        transform.position = new Vector3(transform.position.x - deltaX, transform.position.y, transform.position.z);
+        //    //    }
+        //    //}
+
+
+
+
+
+        //    //if (isCollide == false && transform.position.x - rectTransform.rect.width * rectTransform.lossyScale.x / 2 >= GameController.screenLeft && transform.position.x != _hero.transform.position.x)
+        //    //{
+        //    //    transform.localPosition = new Vector3(transform.localPosition.x - deltaX, transform.localPosition.y, transform.localPosition.z);
+        //    //    if (deltaX > previousPosition.x - transform.position.x)
+        //    //    {
+        //    //        transform.localPosition = new Vector3(0, transform.localPosition.y, transform.localPosition.z);
+        //    //        isCollide = false;
+        //    //    }
+        //    //}
+        //    if (isCollide)
+        //    {
+        //        transform.position = new Vector3(transform.position.x - deltaX, transform.position.y, transform.position.z);
+        //    }
+
+
+
+        //        previousPosition = _hero.transform.position;
+        //}
     }
+
+
 }
