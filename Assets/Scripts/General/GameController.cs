@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -277,6 +278,7 @@ public class GameController : SingletonBase<GameController>
         {
             uiChild.gameObject.SetActive(false);
         }
+        _scoresTMP.gameObject.SetActive(true);
         _gameOverScreen.SetActive(true);
         isGameStarted = false;
         _baffSpawner.canSpawnShield = false;
@@ -286,7 +288,6 @@ public class GameController : SingletonBase<GameController>
         _optionsControl.startBttn.gameObject.SetActive(false);
         _optionsControl.restartBttn.gameObject.SetActive(true);
         _pauseBttn.gameObject.SetActive(false);
-
         isGameStarted = false;
         var saundBG = _menu.transform.Find("Sound_BG");
         if (saundBG != null)
